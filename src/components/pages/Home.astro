@@ -1,0 +1,23 @@
+---
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+import Layout from '@/layouts/Layout.astro'
+import ContentLayout from '@/layouts/ContentLayout.astro'
+import Hero from '@/components/home/Hero.astro'
+import AboutMe from '@/components/home/AboutMe.astro'
+import Exprience from '@/components/home/Exprience.astro'
+import Projects from '@/components/home/Projets.astro'
+import Skills from '@/components//home/Skills.astro'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<Layout title={t('nav.home') as string} lang={lang}>
+  <ContentLayout>
+    <Hero />
+    <AboutMe />
+    <Exprience />
+    <Projects />
+    <Skills />
+  </ContentLayout>
+</Layout>

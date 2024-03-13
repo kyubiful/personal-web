@@ -1,0 +1,21 @@
+---
+const { frontmatter } = Astro.props
+import Typography from '@/components/ui/Typography.astro'
+import { getLangFromUrl } from '@/i18n/utils'
+import ContentLayout from '@/layouts/ContentLayout.astro'
+import Layout from '@/layouts/Layout.astro'
+
+const lang = getLangFromUrl(Astro.url)
+---
+
+<Layout title={frontmatter.title} lang={lang}>
+  <ContentLayout>
+    <article class='prose dark:prose-invert'>
+      <Typography variant='h1' as='h1'>
+        {frontmatter.title}
+      </Typography>
+      <img src={frontmatter.image.url} alt={frontmatter.image.alt} />
+      <slot />
+    </article>
+  </ContentLayout>
+</Layout>

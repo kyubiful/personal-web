@@ -1,0 +1,75 @@
+{
+  "nav.home": "Inicio",
+  "nav.blog": "Blog",
+  "hero.description": "Ingeniero Full Stack con 3 años de experiencia, dedicado a crear soluciones tecnológicas detalladas y eficientes",
+  "hero.mail.arialabel": "Enviar correo electrónico",
+  "hero.github.arialabel": "Perfil de GitHub",
+  "hero.linkedin.arialabel": "Perfil de LinkedIn",
+  "about.title": "Sobre mi",
+  "about.description": "Soy un ingeniero de software con 3 años de experiencia en el desarrollo de aplicaciones web y móviles. Me apasiona la tecnología y me encanta aprender cosas nuevas. Me considero una persona autodidacta, responsable y comprometida con mi trabajo. Me gusta trabajar en equipo y siempre estoy dispuesto a ayudar a los demás",
+  "experience.title": "Experiencia",
+  "experience.jobs": [
+    {
+      "position": "Desarrollador Full Stack",
+      "company": "Diverger",
+      "date": "Marzo 2024 - Actualidad",
+      "description": "Desarrollo de aplicaciones web y móviles utilizando tecnologías como React, React Native, Node.js, Express, MongoDB, entre otras"
+    },
+    {
+      "position": "Desarrollador Frontend",
+      "company": "Avantgarde IT",
+      "date": "Julio 2022 - Marzo 2024",
+      "description": "Desarrollo de aplicaciones web utilizando tecnologías como React, Angular, HTML, CSS, JavaScript, entre otras"
+    },
+    {
+      "position": "Desarrollador Full Stack",
+      "company": "Autónomo",
+      "date": "Julio 2021 - Julio 2022",
+      "description": "Desarrollo de aplicaciones web y móviles utilizando tecnologías como React, React Native, Node.js, Express, MongoDB, entre otras"
+    }
+  ],
+  "projects.title": "Proyectos",
+  "projects.list": [
+    {
+      "name": "Casa rural el rincón",
+      "description": "Landing page de casa rural el rincón para mostrar sus servicios y atraer clientes",
+      "link": "https://www.elrinconcasarural.com",
+      "github": "https://github.com/kyubiful/el-rincon-landing-page",
+      "image": "/elrincon.webp",
+      "technologies": ["Astro", "Tailwind CSS", "TypeScript"]
+    },
+    {
+      "name": "Proyecto M",
+      "description": "Web creada para seguir un evento de un streamer en Twitch y mostrar información relevante del mismo",
+      "link": "https://proyectom.vercel.app",
+      "github": "https://github.com/kyubiful/proyecto-m",
+      "image": "/projectm.webp",
+      "technologies": ["NextJS", "Tailwind CSS", "TypeScript"]
+    },
+    {
+      "name": "Portfolio personal v1",
+      "description": "Primer portfolio personal para mostrar mis proyectos y habilidades",
+      "link": "",
+      "github": "https://github.com/kyubiful/personal-web",
+      "image": "/personal.webp",
+      "technologies": ["React", "Tailwind CSS", "Vite"]
+    }
+  ],
+  "skills.title": "Habilidades",
+  "skills.list": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "React Native",
+    "Tailwind CSS",
+    "Node",
+    "MySQL",
+    "Git",
+    "GitHub"
+  ],
+  "cmdk.action.title": "Actions",
+  "cmdk.action.print.title": "Imprimir",
+  "blog.title": "Blog Español"
+}

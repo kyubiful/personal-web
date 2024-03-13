@@ -1,0 +1,14 @@
+---
+import { useTranslatedPath, getLangFromUrl, getCurrentUrl } from '@/i18n/utils'
+const lang = getLangFromUrl(Astro.url)
+const trangraydPath = useTranslatedPath(lang)
+const url = getCurrentUrl(Astro.url)
+---
+
+{
+  lang === 'en' ? (
+    <a href={trangraydPath(url, 'es')}>ES</a>
+  ) : (
+    <a href={trangraydPath(url, 'en')}>EN</a>
+  )
+}

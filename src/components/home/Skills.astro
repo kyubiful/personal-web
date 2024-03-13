@@ -1,0 +1,18 @@
+---
+import Typography from '@/components/ui/Typography.astro'
+
+import { useTranslations, getLangFromUrl } from '@/i18n/utils'
+import Pill from '../ui/Pill.astro'
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+const skills = t('skills.list') as string[]
+---
+
+<section class='flex flex-col gap-2'>
+  <Typography as='h2' variant='h3' color='black'>
+    {t('skills.title')}
+  </Typography>
+  <div class='flex gap-2 flex-wrap'>
+    {skills.map((skill) => <Pill>{skill}</Pill>)}
+  </div>
+</section>

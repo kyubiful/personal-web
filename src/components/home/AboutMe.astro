@@ -1,0 +1,15 @@
+---
+import Typography from '@/components/ui/Typography.astro'
+
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<section class='flex flex-col gap-2'>
+  <Typography as='h1' variant='h3' color='black'>{t('about.title')}</Typography>
+  <Typography as='p' variant='p' color='black'>
+    {t('about.description')}
+  </Typography>
+</section>

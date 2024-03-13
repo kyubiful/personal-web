@@ -1,0 +1,68 @@
+---
+import LanguagePicker from '@/components/navbar/LanguagePicker.astro'
+import ChangeTheme from '@/components/navbar/ChangeTheme.astro'
+import {
+  getLangFromUrl,
+  useTranslations,
+  useTranslatedPath,
+  getCurrentUrl
+} from '@/i18n/utils'
+
+import { cn } from '@/utils/cn'
+import GithubIcon from '@/components/icons/Github.astro'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+const trangraydPath = useTranslatedPath(lang)
+const currentUrl = getCurrentUrl(Astro.url)
+---
+
+<nav class='py-4 max-w-2xl m-auto flex justify-between'>
+  <ul class='flex gap-4 items-center'>
+    <li>
+      <a
+        href={trangraydPath('/')}
+        class={cn(
+          'transition-all hover:scale-110 font-bold block',
+          currentUrl === '/'
+            ? 'border-b-2 border-gray-800 dark:border-gray-100'
+            : ''
+        )}
+      >
+        {t('nav.home')}
+      </a>
+    </li>
+    <li>
+      <a
+        href={trangraydPath('/blog')}
+        class={cn(
+          'transition-all hover:scale-110 font-bold block',
+          currentUrl.includes('/blog')
+            ? 'border-b-2 border-gray-800 dark:border-gray-100'
+            : ''
+        )}
+      >
+        {t('nav.blog')}
+      </a>
+    </li>
+  </ul>
+  <ul class='flex gap-4 items-center'>
+    <li class='font-bold'>
+      <LanguagePicker />
+    </li>
+    <li>
+      <ChangeTheme />
+    </li>
+    <li>
+      <a
+        href='https://github.com/kyubiful'
+        rel='noopener noreferrer'
+        target='_blank'
+        class='transition-all hover:scale-110 block'
+        aria-label='Github'
+      >
+        <GithubIcon />
+      </a>
+    </li>
+  </ul>
+</nav>

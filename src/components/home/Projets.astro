@@ -1,0 +1,86 @@
+---
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+import Typography from '@/components/ui/Typography.astro'
+import ExternalLinkIcon from '@/components/icons/ExternalLink.astro'
+import GithubIcon from '../icons/Github.astro'
+import Pill from '@/components/ui/Pill.astro'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+interface Project {
+  name: string
+  description: string
+  image: string
+  link: string
+  github: string
+  technologies: string[]
+}
+
+const projects = t('projects.list') as Project[]
+---
+
+<section class='flex flex-col gap-6'>
+  <Typography as='h2' variant='h3' color='black'>
+    {t('projects.title')}
+  </Typography>
+  {
+    projects.map((project, index) => (
+      <div class='flex justify-between gap-10 items-center'>
+        {index % 2 !== 0 && (
+          <img
+            src={project.image}
+            alt={project.name}
+            class='aspect-auto rounded-md w-64 border-2 border-gray-800 dark:border-gray-100 shadow-borderBlack dark:shadow-borderWhite'
+          />
+        )}
+        <div class='flex flex-col gap-3'>
+          <div>
+            <Typography as='h3' variant='h5' color='black'>
+              {project.name}
+            </Typography>
+            <Typography as='p' variant='p' color='black'>
+              {project.description}
+            </Typography>
+          </div>
+          <div class='flex flex-col gap-4'>
+            <div class='flex gap-2'>
+              {project.link.length > 0 && (
+                <a
+                  href={project.link}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  class='transition-all hover:scale-125'
+                >
+                  <ExternalLinkIcon size={16} />
+                </a>
+              )}
+              {project.github.length > 0 && (
+                <a
+                  href={project.github}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  class='transition-all hover:scale-125'
+                >
+                  <GithubIcon size={16} />
+                </a>
+              )}
+            </div>
+            <div class='flex gap-2'>
+              {project.technologies.map((technology) => (
+                <Pill>{technology}</Pill>
+              ))}
+            </div>
+          </div>
+        </div>
+        {index % 2 === 0 && (
+          <img
+            src={project.image}
+            alt={project.name}
+            class='aspect-auto rounded-md w-64 border-2 border-gray-800 dark:border-gray-100 shadow-borderBlack dark:shadow-borderWhite'
+          />
+        )}
+      </div>
+    ))
+  }
+</section>

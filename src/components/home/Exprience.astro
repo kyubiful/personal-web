@@ -1,0 +1,43 @@
+---
+import Typography from '@/components/ui/Typography.astro'
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+
+interface Job {
+  position: string
+  company: string
+  date: string
+  description: string
+}
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+const jobs = t('experience.jobs') as Job[]
+---
+
+<section class='flex flex-col gap-y-3'>
+  <Typography as='h2' variant='h3' color='black'>
+    {t('experience.title')}
+  </Typography>
+  {
+    jobs.map((job: any) => (
+      <article class='flex flex-col gap-2'>
+        <header>
+          <div class='flex justify-between items-center'>
+            <Typography as='h3' variant='h5' color='black'>
+              {job.company}
+            </Typography>
+            <Typography as='p' variant='span' color='black'>
+              {job.date}
+            </Typography>
+          </div>
+          <Typography as='p' variant='span' color='black'>
+            {job.position}
+          </Typography>
+        </header>
+        <Typography as='p' variant='p' color='black'>
+          {job.description}
+        </Typography>
+      </article>
+    ))
+  }
+</section>
