@@ -50,7 +50,7 @@
       "name": "Personal portfolio v1",
       "description": "First personal portfolio to show my projects and skills",
       "link": "",
-      "github": "https://github.com/kyubiful/personal-web",
+      "github": "https://github.com/kyubiful/personal-web-old",
       "image": "/personal.webp",
       "technologies": ["React", "Tailwind CSS", "Vite"]
     }
