@@ -34,7 +34,12 @@ const t = useTranslations(lang)
         postsFiltered.map((post) => (
           <li>
             <article class='flex flex-col border-2 border-gray-800 dark:border-gray-100 rounded-lg p-7 gap-4 shadow-borderBlack dark:shadow-borderWhite'>
-              <Typography variant='h1' as='a' href={post.url}>
+              <Typography
+                variant='h1'
+                as='a'
+                href={post.url}
+                transition:name='post-title'
+              >
                 {post.frontmatter.title}
               </Typography>
               <Typography variant='p' as='p'>

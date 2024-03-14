@@ -3,15 +3,17 @@ import MoonIcon from '@/components/icons/Moon.astro'
 import SunIcon from '@/components/icons/Sun.astro'
 ---
 
-<button
-  id='theme-button'
-  class='p-1 rounded-md text-gray-800 dark:text-gray-100 border-2 border-gray-800 dark:border-gray-100 hover:bg-gray-800 dark:hover:bg-gray-100 hover:text-gray-100 dark:hover:text-gray-800 transition-all'
-  transition:persist
-  aria-label='Toggle dark/light mode'
->
-  <MoonIcon size={16} id='dark-icon' />
-  <SunIcon size={16} id='light-icon' />
-</button>
+<div class='size-7 aspect-square'>
+  <button
+    id='theme-button'
+    class='p-1 rounded-md text-gray-800 dark:text-gray-100 border-2 border-gray-800 dark:border-gray-100 hover:bg-gray-800 dark:hover:bg-gray-100 hover:text-gray-100 dark:hover:text-gray-800 transition-all hidden'
+    transition:persist
+    aria-label='Toggle dark/light mode'
+  >
+    <MoonIcon size={16} id='dark-icon' />
+    <SunIcon size={16} id='light-icon' />
+  </button>
+</div>
 
 <script>
   const button = document.getElementById('theme-button')
@@ -24,16 +26,16 @@ import SunIcon from '@/components/icons/Sun.astro'
   if (lightIcon && darkIcon && hotkeypad && button) {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark')
-      if (darkIcon) {
-        darkIcon.style.display = 'block'
-      }
+      darkIcon.style.display = 'block'
       lightIcon.style.display = 'none'
       hotkeypad.classList.add('dark')
+      button.classList.remove('hidden')
     } else {
       document.documentElement.classList.remove('dark')
       darkIcon.style.display = 'none'
       lightIcon.style.display = 'block'
       hotkeypad.classList.remove('dark')
+      button.classList.remove('hidden')
     }
     button.addEventListener('click', changeTheme)
   }

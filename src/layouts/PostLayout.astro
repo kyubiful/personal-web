@@ -11,7 +11,7 @@ const lang = getLangFromUrl(Astro.url)
 <Layout title={frontmatter.title} lang={lang}>
   <ContentLayout>
     <article class='prose dark:prose-invert'>
-      <Typography variant='h1' as='h1'>
+      <Typography variant='h1' as='h1' transition:name='post-title'>
         {frontmatter.title}
       </Typography>
       <img src={frontmatter.image.url} alt={frontmatter.image.alt} />
