@@ -24,12 +24,12 @@ const postsFiltered = allPosts
     }
   })
 
-const t = useTranslations(lang)
+// const t = useTranslations(lang)
 ---
 
 <Layout title='Blog' lang={lang}>
   <ContentLayout>
-    <ul>
+    <ul class='flex flex-col gap-6'>
       {
         postsFiltered.map((post) => (
           <li>
@@ -38,18 +38,21 @@ const t = useTranslations(lang)
                 variant='h1'
                 as='a'
                 href={post.url}
-                transition:name='post-title'
+                transition:name={`post-title-${post.slug}`}
               >
                 {post.frontmatter.title}
               </Typography>
-              <Typography variant='p' as='p'>
-                {post.frontmatter.description}
-              </Typography>
-              <div class='flex gap-2'>
+              <div
+                class='flex gap-2'
+                transition:name={`post-pill-${post.slug}`}
+              >
                 {post.frontmatter.tags.map((tag) => (
                   <Pill>{tag}</Pill>
                 ))}
               </div>
+              <Typography variant='p' as='p'>
+                {post.frontmatter.description}
+              </Typography>
             </article>
           </li>
         ))
