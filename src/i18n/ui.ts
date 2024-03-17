@@ -1,7 +1,12 @@
 import es from './locale/es.json'
 import en from './locale/en.json'
 
-export const languages = {
+interface Languages {
+  es: string
+  en: string
+}
+
+export const languages: Languages = {
   es: 'es',
   en: 'en'
 }
