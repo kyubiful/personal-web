@@ -20,9 +20,6 @@ dependencies:
   clsx:
     specifier: ^2.1.0
     version: 2.1.0
-  hotkeypad:
-    specifier: ^0.1.1
-    version: 0.1.1
   tailwind-merge:
     specifier: ^2.2.1
     version: 2.2.1
@@ -2020,10 +2017,6 @@ packages:
       hast-util-parse-selector: 4.0.0
       property-information: 6.4.1
       space-separated-tokens: 2.0.2
-    dev: false
-
-  /hotkeypad@0.1.1:
-    resolution: {integrity: sha512-v8e9aByI1ReBX30bL/+dHQwsg+UGZaU4WXEWv72DG74h7fSToUm0udXam5tDCns4NsmWLXKzAL3Rjd9FfTjGXw==}
     dev: false
 
   /html-escaper@3.0.3:
