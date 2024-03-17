@@ -10,5 +10,10 @@ export default defineConfig({
       prefixDefaultLocale: false
     }
   },
+  markdown: {
+    shikiConfig: {
+      theme: 'one-dark-pro'
+    }
+  },
   integrations: [tailwind()]
 })
