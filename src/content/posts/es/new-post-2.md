@@ -1,5 +1,5 @@
 ---
-title: 'First post blog'
+title: 'Mi segunda publicación en el blog'
 pubDate: 2022-07-01
 description: 'Este es la primera publicación de mi nuevo blog de Astro.'
 author: 'Alumno de Astro'
@@ -9,14 +9,8 @@ image:
 tags: ["astro", "bloguear", "aprender en público"]
 ---
 
-This post should show up with my other blog posts, because `Astro.glob()` is returning a list of all my posts in order to create my list.
+Esta entrada debería aparecer con las demás entradas de mi blog, porque `Astro.glob()` está devolviendo una lista de todas mis entradas para crear mi lista.
 
 ```js
-console.log('Hello world')
-```
-
-```html
-<button class='bg-indigo-700'>
-    Save changes
-</button>
+console.log('Hola Mundo')
 ```

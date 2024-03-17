@@ -1,5 +1,5 @@
 ---
-title: 'First post blog'
+title: 'Second post blog'
 pubDate: 2022-07-01
 description: 'Este es la primera publicación de mi nuevo blog de Astro.'
 author: 'Alumno de Astro'
@@ -13,10 +13,4 @@ This post should show up with my other blog posts, because `Astro.glob()` is ret
 
 ```js
 console.log('Hello world')
-```
-
-```html
-<button class='bg-indigo-700'>
-    Save changes
-</button>
 ```
