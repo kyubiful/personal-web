@@ -17,52 +17,56 @@ const trangraydPath = useTranslatedPath(lang)
 const currentUrl = getCurrentUrl(Astro.url)
 ---
 
-<nav class='py-4 max-w-2xl m-auto flex justify-between'>
-  <ul class='flex gap-4 items-center'>
-    <li>
-      <a
-        href={trangraydPath('/')}
-        class={cn(
-          'transition-all hover:scale-110 font-bold block',
-          currentUrl === '/'
-            ? 'border-b-2 border-gray-800 dark:border-gray-100'
-            : ''
-        )}
-      >
-        {t('nav.home')}
-      </a>
-    </li>
-    <li>
-      <a
-        href={trangraydPath('/blog')}
-        class={cn(
-          'transition-all hover:scale-110 font-bold block',
-          currentUrl.includes('/blog')
-            ? 'border-b-2 border-gray-800 dark:border-gray-100'
-            : ''
-        )}
-      >
-        {t('nav.blog')}
-      </a>
-    </li>
-  </ul>
-  <ul class='flex gap-4 items-center'>
-    <li class='font-bold'>
-      <LanguagePicker />
-    </li>
-    <li>
-      <ChangeTheme />
-    </li>
-    <li>
-      <a
-        href='https://github.com/kyubiful'
-        rel='noopener noreferrer'
-        target='_blank'
-        class='transition-all hover:scale-110 block'
-        aria-label='Github'
-      >
-        <GithubIcon />
-      </a>
-    </li>
-  </ul>
-</nav>
+<header
+  class='sticky top-0 z-30 px-6 backdrop-blur bg-white/75 dark:bg-slate-900/75'
+>
+  <nav class='py-4 max-w-2xl m-auto flex justify-between'>
+    <ul class='flex gap-4 items-center'>
+      <li>
+        <a
+          href={trangraydPath('/')}
+          class={cn(
+            'transition-all hover:scale-110 font-bold block',
+            currentUrl === '/'
+              ? 'border-b-2 border-gray-800 dark:border-gray-100'
+              : ''
+          )}
+        >
+          {t('nav.home')}
+        </a>
+      </li>
+      <li>
+        <a
+          href={trangraydPath('/blog')}
+          class={cn(
+            'transition-all hover:scale-110 font-bold block',
+            currentUrl.includes('/blog')
+              ? 'border-b-2 border-gray-800 dark:border-gray-100'
+              : ''
+          )}
+        >
+          {t('nav.blog')}
+        </a>
+      </li>
+    </ul>
+    <ul class='flex gap-4 items-center'>
+      <li class='font-bold'>
+        <LanguagePicker />
+      </li>
+      <li>
+        <ChangeTheme />
+      </li>
+      <li>
+        <a
+          href='https://github.com/kyubiful/personal-web'
+          rel='noopener noreferrer'
+          target='_blank'
+          class='transition-all hover:scale-110 block'
+          aria-label='Github'
+        >
+          <GithubIcon />
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>

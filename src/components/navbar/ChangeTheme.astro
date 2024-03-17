@@ -6,7 +6,7 @@ import SunIcon from '@/components/icons/Sun.astro'
 <div class='size-7 aspect-square'>
   <button
     id='theme-button'
-    class='p-1 rounded-md text-gray-800 dark:text-gray-100 border-2 border-gray-800 dark:border-gray-100 hover:bg-gray-800 dark:hover:bg-gray-100 hover:text-gray-100 dark:hover:text-gray-800 transition-all hidden'
+    class='p-1 rounded-md text-slate-900 dark:text-slate-200 border-2 border-gray-800 dark:border-gray-100 hover:bg-slate-900 dark:hover:text-slate-200 hover:text-slate-200 dark:hover:bg-slate-900 transition-all hidden'
     transition:persist
     aria-label='Toggle dark/light mode'
   >
@@ -16,44 +16,47 @@ import SunIcon from '@/components/icons/Sun.astro'
 </div>
 
 <script>
-  const button = document.getElementById('theme-button')
-  const darkIcon = document.getElementById('dark-icon')
-  const lightIcon = document.getElementById('light-icon')
-  const hotkeypad = document.getElementById('hotkeypad')
+  function setButtonTheme() {
+    const button = document.getElementById('theme-button')
+    const darkIcon = document.getElementById('dark-icon')
+    const lightIcon = document.getElementById('light-icon')
 
-  const theme = localStorage.getItem('theme')
-
-  if (lightIcon && darkIcon && hotkeypad && button) {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark')
-      darkIcon.style.display = 'block'
-      lightIcon.style.display = 'none'
-      hotkeypad.classList.add('dark')
-      button.classList.remove('hidden')
-    } else {
-      document.documentElement.classList.remove('dark')
-      darkIcon.style.display = 'none'
-      lightIcon.style.display = 'block'
-      hotkeypad.classList.remove('dark')
-      button.classList.remove('hidden')
+    const theme = localStorage.getItem('theme')
+    if (lightIcon && darkIcon && button) {
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark')
+        darkIcon.style.display = 'block'
+        lightIcon.style.display = 'none'
+        button.classList.remove('hidden')
+      } else {
+        document.documentElement.classList.remove('dark')
+        darkIcon.style.display = 'none'
+        lightIcon.style.display = 'block'
+        button.classList.remove('hidden')
+      }
+      button.addEventListener('click', changeTheme)
     }
-    button.addEventListener('click', changeTheme)
   }
 
+  setButtonTheme()
+
+  document.addEventListener('astro:after-swap', () => setButtonTheme())
+
   function changeTheme() {
-    if (lightIcon && darkIcon && hotkeypad) {
+    const darkIcon = document.getElementById('dark-icon')
+    const lightIcon = document.getElementById('light-icon')
+
+    if (lightIcon && darkIcon) {
       if (localStorage.theme === 'light') {
         document.documentElement.classList.add('dark')
         localStorage.theme = 'dark'
         darkIcon.style.display = 'block'
         lightIcon.style.display = 'none'
-        hotkeypad.classList.add('dark')
       } else {
         document.documentElement.classList.remove('dark')
         localStorage.theme = 'light'
         darkIcon.style.display = 'none'
         lightIcon.style.display = 'block'
-        hotkeypad.classList.remove('dark')
       }
     }
   }
