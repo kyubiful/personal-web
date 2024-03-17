@@ -1,21 +1,49 @@
 ---
 const { frontmatter } = Astro.props
-import Typography from '@/components/ui/Typography.astro'
-import { getLangFromUrl } from '@/i18n/utils'
+
+// Layouts
 import ContentLayout from '@/layouts/ContentLayout.astro'
 import Layout from '@/layouts/Layout.astro'
 
+// Components
+import Typography from '@/components/ui/Typography.astro'
+import Pill from '@/components/ui/Pill.astro'
+
+import { getLangFromUrl } from '@/i18n/utils'
+
 const lang = getLangFromUrl(Astro.url)
+const slug = Astro.url.href.split('/').pop()
 ---
+
+<!-- Open Graph -->
+<meta name='og:title' content={frontmatter.tittle} />
+<meta name='og:description' content={frontmatter.description} />
+<meta name='og:image' content={frontmatter.image.url} />
+<meta name='og:url' content={Astro.url} />
+<meta name='og:locale' content={lang} />
+<meta name='og:type' content='website' />
+
+<!-- Twitter -->
+<meta name='twitter:card' content='summary_large_image' />
+<meta name='twitter:title' content={frontmatter.tittle} />
+<meta name='twitter:description' content={frontmatter.description} />
+<meta name='twitter:image' content={frontmatter.image.url} />
 
 <Layout title={frontmatter.title} lang={lang}>
   <ContentLayout>
-    <article class='prose dark:prose-invert'>
-      <Typography variant='h1' as='h1' transition:name='post-title'>
+    <article
+      class='shadow-borderBlack dark:shadow-borderWhite border-2 border-gray-800 dark:border-gray-200 rounded-lg p-7 m-auto flex flex-col gap-4'
+    >
+      <img src={frontmatter.image.url} alt={frontmatter.image.alt} />
+      <Typography variant='h1' as='h1' transition:name={`post-title-${slug}`}>
         {frontmatter.title}
       </Typography>
-      <img src={frontmatter.image.url} alt={frontmatter.image.alt} />
-      <slot />
+      <div class='flex gap-2' transition:name={`post-pill-${slug}`}>
+        {frontmatter.tags.map((tag: string) => <Pill>{tag}</Pill>)}
+      </div>
+      <div class='prose prose-slate dark:prose-invert'>
+        <slot />
+      </div>
     </article>
   </ContentLayout>
 </Layout>
