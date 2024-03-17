@@ -26,11 +26,16 @@ const jobs = t('experience.jobs') as Job[]
             <Typography as='h3' variant='h5' color='black'>
               {job.company}
             </Typography>
-            <Typography as='p' variant='span' color='black'>
+            <Typography
+              as='p'
+              variant='span'
+              color='black'
+              class='italic text-xs'
+            >
               {job.date}
             </Typography>
           </div>
-          <Typography as='p' variant='span' color='black'>
+          <Typography as='p' variant='span' color='black' class='text-xs'>
             {job.position}
           </Typography>
         </header>
