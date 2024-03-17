@@ -24,6 +24,7 @@
     {
       "position": "Desarrollador Full Stack",
       "company": "Autónomo",
+
       "date": "Julio 2021 - Julio 2022",
       "description": "Desarrollo de aplicaciones web y móviles utilizando tecnologías como React, React Native, Node.js, Express, MongoDB, entre otras"
     }
@@ -69,7 +70,5 @@
     "Git",
     "GitHub"
   ],
-  "cmdk.action.title": "Actions",
-  "cmdk.action.print.title": "Imprimir",
   "blog.title": "Blog Español"
 }

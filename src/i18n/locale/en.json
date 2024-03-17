@@ -56,7 +56,18 @@
     }
   ],
   "skills.title": "Skills",
-  "blog.title": "Blog Inglés",
-  "cmdk.action.title": "Actions",
-  "cmdk.action.print.title": "Print"
+  "skills.list": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "React Native",
+    "Tailwind CSS",
+    "Node",
+    "MySQL",
+    "Git",
+    "GitHub"
+  ],
+  "blog.title": "Blog Inglés"
 }
