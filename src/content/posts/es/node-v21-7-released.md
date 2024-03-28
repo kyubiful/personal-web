@@ -1,6 +1,6 @@
 ---
 title: 'Novedades de la versión 21.7 de NodeJS'
-pubDate: 2022-07-01
+pubDate: 2024-03-14
 description: 'Descubre cómo NodeJS transforma el desarrollo con sus últimas actualizaciones: gestión nativa de variables de entorno y coloración de consola sin dependencias externas. Estas innovaciones simplifican el flujo de trabajo y marcan el camino hacia un futuro más eficiente y minimalista en la programación.'
 author: 'Sergio Zabala'
 image:

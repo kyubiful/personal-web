@@ -1,6 +1,6 @@
 ---
 title: "What's New in NodeJS Version 21.7"
-pubDate: 2022-07-01
+pubDate: 2024-03-14
 description: 'Discover how NodeJS is transforming development with its latest updates: native environment variable management and console coloring without external dependencies. These innovations simplify the workflow and pave the way for a more efficient and minimalist future in programming.'
 author: 'Sergio Zabala'
 image:
