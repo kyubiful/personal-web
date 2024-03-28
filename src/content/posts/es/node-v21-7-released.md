@@ -7,6 +7,7 @@ image:
     url: '/nodejs.webp'
     alt: 'Logotipo de NodeJS'
 tags: ["NodeJS", "JavaScript"]
+transitionSlug: 'node-v21-7-released'
 ---
 
 ## Adiós a la dependencia de dotenv

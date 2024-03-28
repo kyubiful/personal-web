@@ -19,7 +19,6 @@ const postsFiltered = allPosts
 
     return {
       frontmatter: post.data,
-      slug: post.slug.split('/')[1],
       url
     }
   })
@@ -36,13 +35,13 @@ const postsFiltered = allPosts
                 variant='h1'
                 as='a'
                 href={post.url}
-                transition:name={`post-title-${post.slug}`}
+                transition:name={`post-title-${post.frontmatter.transitionSlug}`}
               >
                 {post.frontmatter.title}
               </Typography>
               <div
                 class='flex gap-2'
-                transition:name={`post-pill-${post.slug}`}
+                transition:name={`post-pill-${post.frontmatter.transitionSlug}`}
               >
                 {post.frontmatter.tags.map((tag) => (
                   <Pill>{tag}</Pill>
