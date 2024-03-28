@@ -47,7 +47,10 @@ const postsFiltered = allPosts
                   <Pill>{tag}</Pill>
                 ))}
               </div>
-              <section class='flex gap-2'>
+              <section
+                class='flex gap-2'
+                transition:name={`post-date-${post.frontmatter.transitionSlug}`}
+              >
                 <Typography variant='p' as='p' class='capitalize'>
                   {post.frontmatter.pubDate.toLocaleString(
                     lang === 'en' ? 'en-US' : 'es-ES',

@@ -14,6 +14,7 @@ import { getLangFromUrl } from '@/i18n/utils'
 const lang = getLangFromUrl(Astro.url)
 const titleTransition = 'post-title-' + frontmatter.transitionSlug
 const pillTransition = 'post-pill-' + frontmatter.transitionSlug
+const dateTransition = 'post-date-' + frontmatter.transitionSlug
 ---
 
 <!-- Open Graph -->
@@ -46,6 +47,17 @@ const pillTransition = 'post-pill-' + frontmatter.transitionSlug
           <div class='flex gap-2' transition:name={pillTransition}>
             {frontmatter.tags.map((tag: string) => <Pill>{tag}</Pill>)}
           </div>
+          <section class='flex gap-2' transition:name={dateTransition}>
+            <Typography variant='p' as='p' class='capitalize'>
+              {
+                frontmatter.pubDate.toLocaleString(
+                  lang === 'en' ? 'en-US' : 'es-ES',
+                  { day: 'numeric', month: 'short', year: 'numeric' }
+                )
+              }
+              - {frontmatter.author}
+            </Typography>
+          </section>
         </section>
         <div class='prose prose-slate dark:prose-invert'>
           <slot />
