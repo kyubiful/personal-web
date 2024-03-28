@@ -31,18 +31,28 @@ const slug = Astro.url.href.split('/').pop()
 
 <Layout title={frontmatter.title} lang={lang}>
   <ContentLayout>
-    <article
-      class='shadow-borderBlack dark:shadow-borderWhite border-2 border-gray-800 dark:border-gray-200 rounded-lg p-7 m-auto flex flex-col gap-4'
-    >
-      <img src={frontmatter.image.url} alt={frontmatter.image.alt} />
-      <Typography variant='h1' as='h1' transition:name={`post-title-${slug}`}>
-        {frontmatter.title}
-      </Typography>
-      <div class='flex gap-2' transition:name={`post-pill-${slug}`}>
-        {frontmatter.tags.map((tag: string) => <Pill>{tag}</Pill>)}
-      </div>
-      <div class='prose prose-slate dark:prose-invert'>
-        <slot />
+    <article class='flex flex-col gap-10'>
+      <img
+        src={frontmatter.image.url}
+        alt={frontmatter.image.alt}
+        class='shadow-borderBlack dark:shadow-borderWhite border-2 border-gray-800 dark:border-gray-200 rounded-lg m-auto flex flex-col gap-4 w-full aspect-video object-cover'
+      />
+      <div class='flex flex-col gap-10'>
+        <section class='flex flex-col gap-4'>
+          <Typography
+            variant='h1'
+            as='h1'
+            transition:name={`post-title-${slug}`}
+          >
+            {frontmatter.title}
+          </Typography>
+          <div class='flex gap-2' transition:name={`post-pill-${slug}`}>
+            {frontmatter.tags.map((tag: string) => <Pill>{tag}</Pill>)}
+          </div>
+        </section>
+        <div class='prose prose-slate dark:prose-invert'>
+          <slot />
+        </div>
       </div>
     </article>
   </ContentLayout>

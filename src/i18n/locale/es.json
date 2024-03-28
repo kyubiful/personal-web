@@ -13,20 +13,20 @@
       "position": "Desarrollador Full Stack",
       "company": "Diverger",
       "date": "Marzo 2024 - Actualidad",
-      "description": "Desarrollo de aplicaciones web y móviles utilizando tecnologías como React, React Native, Node.js, Express, MongoDB, entre otras"
+      "description": "Desarrollo de aplicaciones web y móviles utilizando tecnologías como HTML, CSS, JavaScript, React, React Native, NodeJS, entre otras"
     },
     {
-      "position": "Desarrollador Frontend",
+      "position": "Desarrollador Full Stack",
       "company": "Avantgarde IT",
       "date": "Julio 2022 - Marzo 2024",
-      "description": "Desarrollo de aplicaciones web utilizando tecnologías como React, Angular, HTML, CSS, JavaScript, entre otras"
+      "description": "Desarrollo de aplicaciones web y móviles utilizando tecnologías como HTML, CSS, JavaScript, React, React Native, NodeJS entre otras"
     },
     {
       "position": "Desarrollador Full Stack",
       "company": "Autónomo",
 
       "date": "Julio 2021 - Julio 2022",
-      "description": "Desarrollo de aplicaciones web y móviles utilizando tecnologías como React, React Native, Node.js, Express, MongoDB, entre otras"
+      "description": "Desarrollo de aplicaciones web utilizando tecnologías como HTML, CSS, JavasScript, PHP, React y Laravel"
     }
   ],
   "projects.title": "Proyectos",
@@ -69,6 +69,5 @@
     "MySQL",
     "Git",
     "GitHub"
-  ],
-  "blog.title": "Blog Español"
+  ]
 }

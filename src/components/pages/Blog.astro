@@ -50,9 +50,15 @@ const postsFiltered = allPosts
                   <Pill>{tag}</Pill>
                 ))}
               </div>
-              <Typography variant='p' as='p'>
-                {post.frontmatter.description}
-              </Typography>
+              <section class='flex gap-2'>
+                <Typography variant='p' as='p' class='capitalize'>
+                  {post.frontmatter.pubDate.toLocaleString(
+                    lang === 'en' ? 'en-US' : 'es-ES',
+                    { day: 'numeric', month: 'short', year: 'numeric' }
+                  )}
+                  - {post.frontmatter.author}
+                </Typography>
+              </section>
             </article>
           </li>
         ))
