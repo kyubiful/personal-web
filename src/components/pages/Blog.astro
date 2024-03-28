@@ -1,6 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+import { getLangFromUrl } from '@/i18n/utils'
 import ContentLayout from '@/layouts/ContentLayout.astro'
 import { getCollection } from 'astro:content'
 import Typography from '../ui/Typography.astro'
@@ -23,8 +23,6 @@ const postsFiltered = allPosts
       url
     }
   })
-
-// const t = useTranslations(lang)
 ---
 
 <Layout title='Blog' lang={lang}>
