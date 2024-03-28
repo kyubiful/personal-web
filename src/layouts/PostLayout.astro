@@ -1,5 +1,5 @@
 ---
-const { frontmatter, slug } = Astro.props
+const { frontmatter } = Astro.props
 
 // Layouts
 import ContentLayout from '@/layouts/ContentLayout.astro'
@@ -32,13 +32,13 @@ const pillTransition = 'post-pill-' + frontmatter.transitionSlug
 
 <Layout title={frontmatter.title} lang={lang}>
   <ContentLayout>
-    <article class='flex flex-col gap-10'>
+    <article class='flex flex-col gap-10 items-center'>
       <img
         src={frontmatter.image.url}
         alt={frontmatter.image.alt}
         class='shadow-borderBlack dark:shadow-borderWhite border-2 border-gray-800 dark:border-gray-200 rounded-lg m-auto flex flex-col gap-4 w-full aspect-video object-cover'
       />
-      <div class='flex flex-col gap-10'>
+      <div class='flex flex-col gap-10 max-w-[65ch]'>
         <section class='flex flex-col gap-4'>
           <Typography variant='h1' as='h1' transition:name={titleTransition}>
             {frontmatter.title}
