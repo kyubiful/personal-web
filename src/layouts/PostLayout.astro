@@ -39,8 +39,8 @@ const dateTransition = 'post-date-' + frontmatter.transitionSlug
         alt={frontmatter.image.alt}
         class='shadow-borderBlack dark:shadow-borderWhite border-2 border-gray-800 dark:border-gray-200 rounded-lg m-auto flex flex-col gap-4 w-full aspect-video object-cover'
       />
-      <div class='flex flex-col gap-10 max-w-[65ch]'>
-        <section class='flex flex-col gap-4'>
+      <div class='flex flex-col gap-10 max-w-prose'>
+        <section class='flex flex-col gap-4 p-2 md:p-0'>
           <Typography variant='h1' as='h1' transition:name={titleTransition}>
             {frontmatter.title}
           </Typography>
@@ -59,7 +59,9 @@ const dateTransition = 'post-date-' + frontmatter.transitionSlug
             </Typography>
           </section>
         </section>
-        <div class='prose prose-sm md:prose-base prose-slate dark:prose-invert'>
+        <div
+          class='prose prose-sm md:prose-base prose-slate dark:prose-invert p-2 sm:p-0 w-screen'
+        >
           <slot />
         </div>
       </div>
