@@ -1,0 +1,45 @@
+---
+import { cn } from '@/utils/cn'
+import { getPostCoverIcon } from '@/utils/postCoverIcons'
+
+interface Props {
+  tags: string[]
+  class?: string
+}
+
+const { tags, class: className } = Astro.props
+const { Icon, label, colorClass, chipClass } = getPostCoverIcon(tags)
+---
+
+<div
+  class={cn(
+    'post-cover relative w-full aspect-video rounded-lg border-2 border-gray-800 dark:border-gray-100 shadow-borderBlack dark:shadow-borderWhite overflow-hidden bg-gray-100 dark:bg-slate-700 flex flex-col items-center justify-center gap-3',
+    className
+  )}
+>
+  <span class="text-xs text-slate-600 dark:text-slate-300">
+    ~/tags/{tags[0]?.toLowerCase().replace(/\s+/g, '-') ?? 'others'}
+  </span>
+  <div class="h-11 flex items-center justify-center">
+    {
+      chipClass ? (
+        <div class={cn('w-11 h-11 rounded-[10px] flex items-center justify-center', chipClass)}>
+          <Icon size={26} class={colorClass} />
+        </div>
+      ) : (
+        <Icon size={38} class={colorClass} />
+      )
+    }
+  </div>
+  <span class="text-lg font-bold text-slate-900 dark:text-slate-200">{label}</span>
+</div>
+
+<style>
+  .post-cover {
+    background-image: radial-gradient(rgba(31, 41, 55, 0.14) 1px, transparent 1px);
+    background-size: 14px 14px;
+  }
+  :global(.dark) .post-cover {
+    background-image: radial-gradient(rgba(243, 244, 246, 0.14) 1px, transparent 1px);
+  }
+</style>

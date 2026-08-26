@@ -9,6 +9,7 @@ import Layout from '@/layouts/Layout.astro'
 import Typography from '@/components/ui/Typography.astro'
 import Pill from '@/components/ui/Pill.astro'
 import TerminalWindow from '@/components/ui/TerminalWindow.astro'
+import PostCover from '@/components/ui/PostCover.astro'
 
 import { getLangFromUrl, useTranslations } from '@/i18n/utils'
 import { getBlogPageUrl } from '@/utils/posts'
@@ -51,11 +52,7 @@ const blogHome = getBlogPageUrl(lang, 1)
       bodyClass='p-4 sm:p-8'
     >
       <article class='flex flex-col gap-10 items-center'>
-        <img
-          src={frontmatter.image.url}
-          alt={frontmatter.image.alt}
-          class='shadow-borderBlack dark:shadow-borderWhite border-2 border-gray-800 dark:border-gray-200 rounded-lg m-auto flex flex-col gap-4 w-full aspect-video object-cover'
-        />
+        <PostCover tags={frontmatter.tags} />
         <div class='flex flex-col gap-10 max-w-3xl min-w-0 w-full'>
           <section class='flex flex-col gap-4 p-2 md:p-0 min-w-0'>
             <Typography
