@@ -1,0 +1,64 @@
+---
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+
+interface Props {
+  currentPage: number
+  lastPage: number
+  prevUrl: string | null
+  nextUrl: string | null
+  pageUrls: string[]
+}
+
+const { currentPage, lastPage, prevUrl, nextUrl, pageUrls } = Astro.props
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const linkClass =
+  'min-w-9 h-9 px-3 flex items-center justify-center rounded-md border-2 border-gray-800 dark:border-gray-100 bg-white dark:bg-slate-900 hover:bg-slate-900 hover:dark:bg-white hover:text-slate-200 hover:dark:text-slate-900 transition-all text-xs shadow-borderBlack dark:shadow-borderWhite'
+
+const disabledClass =
+  'min-w-9 h-9 px-3 flex items-center justify-center rounded-md border-2 border-gray-800 dark:border-gray-100 bg-white dark:bg-slate-900 text-xs opacity-45 translate-x-[3px] translate-y-[3px] cursor-not-allowed'
+
+const activeClass =
+  'min-w-9 h-9 px-3 flex items-center justify-center rounded-md border-2 border-gray-800 dark:border-gray-100 bg-accent-light dark:bg-accent-dark text-white text-xs shadow-borderBlack dark:shadow-borderWhite'
+---
+
+{
+  lastPage > 1 && (
+    <nav class='flex items-center justify-center gap-2 flex-wrap' aria-label='Pagination'>
+      {prevUrl ? (
+        <a href={prevUrl} class={linkClass}>
+          {t('blog.pagination.prev')}
+        </a>
+      ) : (
+        <span aria-disabled='true' class={disabledClass}>
+          {t('blog.pagination.prev')}
+        </span>
+      )}
+
+      {pageUrls.map((url, index) => {
+        const page = index + 1
+        return page === currentPage ? (
+          <span aria-current='page' class={activeClass}>
+            {page}
+          </span>
+        ) : (
+          <a href={url} class={linkClass}>
+            {page}
+          </a>
+        )
+      })}
+
+      {nextUrl ? (
+        <a href={nextUrl} class={linkClass}>
+          {t('blog.pagination.next')}
+        </a>
+      ) : (
+        <span aria-disabled='true' class={disabledClass}>
+          {t('blog.pagination.next')}
+        </span>
+      )}
+    </nav>
+  )
+}

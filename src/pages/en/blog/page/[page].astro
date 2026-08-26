@@ -1,0 +1,30 @@
+---
+import BlogPage from '@/components/pages/Blog.astro'
+import { getPostsByLang, getBlogPageUrl, getLastPage, POSTS_PER_PAGE } from '@/utils/posts'
+
+const lang = 'en'
+
+export async function getStaticPaths() {
+  const allPosts = await getPostsByLang('en')
+  const lastPage = getLastPage(allPosts.length)
+
+  return Array.from({ length: Math.max(0, lastPage - 1) }, (_, i) => ({
+    params: { page: String(i + 2) }
+  }))
+}
+
+const currentPage = Number(Astro.params.page)
+const allPosts = await getPostsByLang(lang)
+const lastPage = getLastPage(allPosts.length)
+const posts = allPosts.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE)
+const pageUrls = Array.from({ length: lastPage }, (_, i) => getBlogPageUrl(lang, i + 1))
+---
+
+<BlogPage
+  posts={posts}
+  currentPage={currentPage}
+  lastPage={lastPage}
+  prevUrl={getBlogPageUrl(lang, currentPage - 1)}
+  nextUrl={currentPage < lastPage ? getBlogPageUrl(lang, currentPage + 1) : null}
+  pageUrls={pageUrls}
+/>

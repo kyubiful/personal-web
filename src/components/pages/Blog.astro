@@ -2,67 +2,88 @@
 import Layout from '@/layouts/Layout.astro'
 import { getLangFromUrl } from '@/i18n/utils'
 import ContentLayout from '@/layouts/ContentLayout.astro'
-import { getCollection } from 'astro:content'
 import Typography from '../ui/Typography.astro'
 import Pill from '../ui/Pill.astro'
+import TerminalWindow from '../ui/TerminalWindow.astro'
+import Pagination from '../ui/Pagination.astro'
+import type { PostListItem } from '@/utils/posts'
+
+interface Props {
+  posts: PostListItem[]
+  currentPage: number
+  lastPage: number
+  prevUrl: string | null
+  nextUrl: string | null
+  pageUrls: string[]
+}
 
 const lang = getLangFromUrl(Astro.url)
-
-const allPosts = await getCollection('posts')
-
-const postsFiltered = allPosts
-  .filter((post) => post.slug.split('/')[0] === lang)
-  .map((post) => {
-    const slug = post.slug.split('/')[1]
-    const lang = post.slug.split('/')[0] === 'en' ? '/en' : ''
-    const url = `${lang}/blog/${slug}`
-
-    return {
-      frontmatter: post.data,
-      url
-    }
-  })
+const { posts, currentPage, lastPage, prevUrl, nextUrl, pageUrls } = Astro.props
 ---
 
 <Layout title='Blog' lang={lang}>
   <ContentLayout>
     <ul class='flex flex-col gap-6'>
       {
-        postsFiltered.map((post) => (
+        posts.map((post, index) => (
           <li>
-            <article class='flex flex-col border-2 border-gray-800 dark:border-gray-100 rounded-lg p-7 gap-4 shadow-borderBlack dark:shadow-borderWhite'>
-              <Typography
-                variant='h1'
-                as='a'
-                href={post.url}
-                transition:name={`post-title-${post.frontmatter.transitionSlug}`}
-              >
-                {post.frontmatter.title}
-              </Typography>
-              <div
-                class='flex gap-2'
-                transition:name={`post-pill-${post.frontmatter.transitionSlug}`}
-              >
-                {post.frontmatter.tags.map((tag) => (
-                  <Pill>{tag}</Pill>
-                ))}
-              </div>
-              <section
-                class='flex gap-2'
-                transition:name={`post-date-${post.frontmatter.transitionSlug}`}
-              >
-                <Typography variant='p' as='p' class='capitalize'>
-                  {post.frontmatter.pubDate.toLocaleString(
-                    lang === 'en' ? 'en-US' : 'es-ES',
-                    { day: 'numeric', month: 'short', year: 'numeric' }
-                  )}
-                  - {post.frontmatter.author}
+            <TerminalWindow path={`${post.slug}.md`} bodyClass='p-5 sm:p-7'>
+              {currentPage === 1 && index === 0 && (
+                <span
+                  slot='bar-right'
+                  class='text-[10px] font-bold uppercase text-white bg-accent-light dark:bg-accent-dark px-2 py-0.5 rounded shrink-0'
+                >
+                  Latest
+                </span>
+              )}
+              <article class='flex flex-col gap-4'>
+                <Typography
+                  variant='h1'
+                  as='a'
+                  href={post.url}
+                  class='text-2xl sm:text-4xl'
+                  transition:name={`post-title-${post.frontmatter.transitionSlug}`}
+                >
+                  {post.frontmatter.title}
                 </Typography>
-              </section>
-            </article>
+                <div
+                  class='flex gap-2 flex-wrap'
+                  transition:name={`post-pill-${post.frontmatter.transitionSlug}`}
+                >
+                  {post.frontmatter.tags.map((tag) => (
+                    <Pill>{tag}</Pill>
+                  ))}
+                </div>
+                <section
+                  class='flex flex-wrap justify-between items-center gap-x-2 gap-y-1'
+                  transition:name={`post-date-${post.frontmatter.transitionSlug}`}
+                >
+                  <Typography variant='p' as='p' class='capitalize'>
+                    {post.frontmatter.pubDate.toLocaleString(
+                      lang === 'en' ? 'en-US' : 'es-ES',
+                      { day: 'numeric', month: 'short', year: 'numeric' }
+                    )}
+                    - {post.frontmatter.author}
+                  </Typography>
+                  <a
+                    href={post.url}
+                    class='text-xs text-accent-light dark:text-accent-dark hover:translate-x-0.5 transition-transform'
+                  >
+                    read →
+                  </a>
+                </section>
+              </article>
+            </TerminalWindow>
           </li>
         ))
       }
     </ul>
+    <Pagination
+      currentPage={currentPage}
+      lastPage={lastPage}
+      prevUrl={prevUrl}
+      nextUrl={nextUrl}
+      pageUrls={pageUrls}
+    />
   </ContentLayout>
 </Layout>
