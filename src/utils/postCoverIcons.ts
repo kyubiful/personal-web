@@ -49,18 +49,38 @@ export const POST_COVER_ICONS: Record<string, PostCoverIcon> = {
     chipClass: 'bg-white'
   },
   nodejs: { Icon: NodeJs, label: 'Node.js', colorClass: 'text-[#339933]' },
-  bun: { Icon: Bun, label: 'Bun', colorClass: 'text-black dark:text-[#FBF0DF]' },
+  bun: {
+    Icon: Bun,
+    label: 'Bun',
+    colorClass: 'text-black dark:text-[#FBF0DF]'
+  },
   git: { Icon: Git, label: 'Git', colorClass: 'text-[#F05032]' },
   ai: { Icon: NetworkNodes, label: 'AI', colorClass: ACCENT },
   llm: { Icon: NetworkNodes, label: 'LLM', colorClass: ACCENT },
   mcp: { Icon: Plug, label: 'MCP', colorClass: ACCENT },
   opensource: { Icon: OpenLock, label: 'Open Source', colorClass: ACCENT },
-  developertools: { Icon: Wrench, label: 'Developer Tools', colorClass: ACCENT },
+  developertools: {
+    Icon: Wrench,
+    label: 'Developer Tools',
+    colorClass: ACCENT
+  },
   tooling: { Icon: Wrench, label: 'Tooling', colorClass: ACCENT },
   ecmascript: { Icon: CurlyBraces, label: 'ECMAScript', colorClass: ACCENT },
-  softwarearchitecture: { Icon: LayeredStack, label: 'Software Architecture', colorClass: ACCENT },
-  bestpractices: { Icon: ShieldCheck, label: 'Best Practices', colorClass: ACCENT },
-  softwaredevelopment: { Icon: TerminalPrompt, label: 'Software Development', colorClass: ACCENT }
+  softwarearchitecture: {
+    Icon: LayeredStack,
+    label: 'Software Architecture',
+    colorClass: ACCENT
+  },
+  bestpractices: {
+    Icon: ShieldCheck,
+    label: 'Best Practices',
+    colorClass: ACCENT
+  },
+  softwaredevelopment: {
+    Icon: TerminalPrompt,
+    label: 'Software Development',
+    colorClass: ACCENT
+  }
 }
 
 export const OTHERS_COVER_ICON: PostCoverIcon = {

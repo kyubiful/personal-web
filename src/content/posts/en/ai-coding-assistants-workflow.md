@@ -6,7 +6,7 @@ author: 'Sergio Zabala'
 image:
   url: '/placeholder.webp'
   alt: 'Terminal window with an AI coding assistant running commands.'
-tags: ["AI", "Developer Tools"]
+tags: ['AI', 'Developer Tools']
 transitionSlug: 'ai-coding-assistants-workflow'
 ---
 

@@ -8,7 +8,9 @@ export interface PostListItem {
 
 export const POSTS_PER_PAGE = 5
 
-export async function getPostsByLang(lang: 'es' | 'en'): Promise<PostListItem[]> {
+export async function getPostsByLang(
+  lang: 'es' | 'en'
+): Promise<PostListItem[]> {
   const allPosts = await getCollection('posts')
 
   return allPosts
@@ -24,7 +26,10 @@ export async function getPostsByLang(lang: 'es' | 'en'): Promise<PostListItem[]>
         url
       }
     })
-    .sort((a, b) => b.frontmatter.pubDate.valueOf() - a.frontmatter.pubDate.valueOf())
+    .sort(
+      (a, b) =>
+        b.frontmatter.pubDate.valueOf() - a.frontmatter.pubDate.valueOf()
+    )
 }
 
 export function getBlogPageUrl(lang: 'es' | 'en', page: number): string {

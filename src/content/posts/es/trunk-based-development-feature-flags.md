@@ -6,7 +6,7 @@ author: 'Sergio Zabala'
 image:
   url: '/placeholder.webp'
   alt: 'Diagrama de una única rama trunk con commits de corta duración integrándose directamente en main.'
-tags: ["Software Development", "Git", "Best Practices"]
+tags: ['Software Development', 'Git', 'Best Practices']
 transitionSlug: 'trunk-based-development-feature-flags'
 ---
 
@@ -14,7 +14,7 @@ transitionSlug: 'trunk-based-development-feature-flags'
 
 Git-flow fue diseñado para un mundo de releases planificados: ramas `develop`, `release/*`, `feature/*` y `hotfix/*` existen para aislar el trabajo hasta que está "listo". El problema es que ese aislamiento es justo lo que retrasa la integración. Una rama de feature que vive semanas acumula divergencia respecto a `main`, y el merge final termina siendo un evento de alto riesgo en lugar de algo rutinario.
 
-La propia cultura de ingeniería de Google lo señala directamente. En *Software Engineering at Google*, los autores describen equipos que se vuelven "adictos a las ramas de desarrollo": notan que integrar ramas grandes desestabiliza el código y concluyen erróneamente que la solución es más aislamiento en ramas, no menos. El resultado es una sobrecarga creciente: coordinación dedicada de merges, roles rotativos de "Build Master" y burocracia de ramas de release que el libro califica sin rodeos como "sobrecarga pura".
+La propia cultura de ingeniería de Google lo señala directamente. En _Software Engineering at Google_, los autores describen equipos que se vuelven "adictos a las ramas de desarrollo": notan que integrar ramas grandes desestabiliza el código y concluyen erróneamente que la solución es más aislamiento en ramas, no menos. El resultado es una sobrecarga creciente: coordinación dedicada de merges, roles rotativos de "Build Master" y burocracia de ramas de release que el libro califica sin rodeos como "sobrecarga pura".
 
 ## Qué es realmente trunk-based development
 
@@ -35,9 +35,9 @@ La explicación clásica de Martin Fowler es que un [feature toggle](https://mar
 
 ```js
 if (featureFlags.newCheckoutFlow) {
-  renderNewCheckout();
+  renderNewCheckout()
 } else {
-  renderLegacyCheckout();
+  renderLegacyCheckout()
 }
 ```
 

@@ -93,7 +93,10 @@ const blogHome = getBlogPageUrl(lang, 1)
       if (!link) return
       const base = link.dataset.blogBase
       const stored = sessionStorage.getItem('blog:lastPage')
-      link.setAttribute('href', stored && stored.startsWith(base) ? stored : base)
+      link.setAttribute(
+        'href',
+        stored && stored.startsWith(base) ? stored : base
+      )
     })()
   </script>
 </Layout>

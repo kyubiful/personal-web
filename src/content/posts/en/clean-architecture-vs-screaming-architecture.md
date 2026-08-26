@@ -1,20 +1,20 @@
 ---
 title: 'Clean Architecture vs Screaming Architecture: Structuring a Project by Use Cases'
 pubDate: 2026-06-01
-description: 'A practical comparison of Robert C. Martin''s Clean Architecture and Screaming Architecture, with a before/after example showing how to organize a codebase around business use cases instead of frameworks and technical layers.'
+description: "A practical comparison of Robert C. Martin's Clean Architecture and Screaming Architecture, with a before/after example showing how to organize a codebase around business use cases instead of frameworks and technical layers."
 author: 'Sergio Zabala'
 image:
   url: '/placeholder.webp'
   alt: 'Diagram comparing a layered folder structure with a use-case-driven folder structure.'
-tags: ["Software Architecture", "Best Practices"]
+tags: ['Software Architecture', 'Best Practices']
 transitionSlug: 'clean-architecture-vs-screaming-architecture'
 ---
 
 ## Two Ideas, One Author
 
-Robert C. Martin ("Uncle Bob") introduced both concepts on his blog. In [Screaming Architecture](https://blog.cleancoder.com/uncle-bob/2011/09/30/Screaming-Architecture.html) (2011), he asks a simple but uncomfortable question: if you look at the top-level folder structure of your project, does it tell you what the application *does*, or only which framework it uses? A year later, in [The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) (2012), he formalized the layering and dependency rules that make that kind of structure possible.
+Robert C. Martin ("Uncle Bob") introduced both concepts on his blog. In [Screaming Architecture](https://blog.cleancoder.com/uncle-bob/2011/09/30/Screaming-Architecture.html) (2011), he asks a simple but uncomfortable question: if you look at the top-level folder structure of your project, does it tell you what the application _does_, or only which framework it uses? A year later, in [The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) (2012), he formalized the layering and dependency rules that make that kind of structure possible.
 
-They're not competing ideas — Screaming Architecture is the *visible outcome* of applying Clean Architecture correctly. One tells you *why* your folders should look a certain way; the other tells you *how* to get there.
+They're not competing ideas — Screaming Architecture is the _visible outcome_ of applying Clean Architecture correctly. One tells you _why_ your folders should look a certain way; the other tells you _how_ to get there.
 
 ## Screaming Architecture: What Your Folders Say About You
 
@@ -24,7 +24,7 @@ Martin's analogy is architectural in the literal sense: when you look at the blu
 
 Most codebases fail this test. Open a typical Node.js or Rails project and the first thing you see is `controllers/`, `models/`, `services/`, `routes/` — an org chart of technical roles, not a description of the business. You can't tell if it's a billing system or a blog engine until you dig several folders deep.
 
-Martin's point is that the framework, the database, and the web itself are *details* — decisions that should be deferrable. A well-structured system should let you delay picking Express vs. Fastify, or Postgres vs. Mongo, without touching your business logic.
+Martin's point is that the framework, the database, and the web itself are _details_ — decisions that should be deferrable. A well-structured system should let you delay picking Express vs. Fastify, or Postgres vs. Mongo, without touching your business logic.
 
 ## Clean Architecture: The Mechanism Behind the Scream
 
@@ -61,7 +61,7 @@ Nothing here screams "e-commerce platform." To understand what the system actual
 
 ## After: A Use-Case-First Structure
 
-Reorganized around what the system *does*, following the Dependency Rule:
+Reorganized around what the system _does_, following the Dependency Rule:
 
 ```
 src/

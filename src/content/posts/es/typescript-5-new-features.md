@@ -1,12 +1,12 @@
 ---
-title: "Las Novedades de TypeScript 5.x"
+title: 'Las Novedades de TypeScript 5.x'
 pubDate: 2025-08-15
 description: 'Un recorrido por la serie de versiones TypeScript 5.x: decoradores estándar, el operador satisfies, las declaraciones using para gestión de recursos, predicados de tipo inferidos y el resto de funciones que cambiaron silenciosamente cómo escribimos JavaScript tipado.'
 author: 'Sergio Zabala'
 image:
   url: '/typescript.webp'
   alt: 'TypeScript logo.'
-tags: ["TypeScript", "JavaScript"]
+tags: ['TypeScript', 'JavaScript']
 transitionSlug: 'typescript-5-new-features'
 ---
 
@@ -19,15 +19,15 @@ TypeScript 5.0 sustituyó los antiguos decoradores experimentales por una implem
 ```ts
 function logged(target: Function, context: ClassMethodDecoratorContext) {
   return function (this: unknown, ...args: unknown[]) {
-    console.log(`Llamando a ${String(context.name)}`);
-    return target.apply(this, args);
-  };
+    console.log(`Llamando a ${String(context.name)}`)
+    return target.apply(this, args)
+  }
 }
 
 class Greeter {
   @logged
   greet(name: string) {
-    return `Hola, ${name}!`;
+    return `Hola, ${name}!`
   }
 }
 ```
@@ -38,10 +38,10 @@ También desde la 5.0, añadir `const` a un parámetro de tipo genérico le indi
 
 ```ts
 function tuple<const T extends readonly unknown[]>(...items: T): T {
-  return items;
+  return items
 }
 
-const point = tuple(10, 20); // readonly [10, 20], no number[]
+const point = tuple(10, 20) // readonly [10, 20], no number[]
 ```
 
 ## Declaraciones using para Gestión de Recursos
@@ -50,8 +50,8 @@ TypeScript 5.2 introdujo `using` y `await using`, implementando la propuesta de 
 
 ```ts
 function readFile(path: string) {
-  using handle = openFile(path); // se libera automáticamente
-  return handle.read();
+  using handle = openFile(path) // se libera automáticamente
+  return handle.read()
 } // handle.close() se ejecuta aquí, incluso con un return anticipado o un throw
 ```
 
@@ -67,7 +67,7 @@ function createStreetLight<T extends string>(
   // ...
 }
 
-createStreetLight(["red", "yellow", "green"], "blue"); // error: "blue" no es un color conocido
+createStreetLight(['red', 'yellow', 'green'], 'blue') // error: "blue" no es un color conocido
 ```
 
 ## Predicados de Tipo Inferidos
@@ -75,8 +75,8 @@ createStreetLight(["red", "yellow", "green"], "blue"); // error: "blue" no es un
 TypeScript 5.5 hizo que el filtrado de arrays "simplemente funcionara" para el estrechamiento de tipos. Una función como `(x) => x !== undefined` usada dentro de `.filter()` ahora se reconoce automáticamente como un type guard, así que ya no hace falta anotarla a mano.
 
 ```ts
-const values = [1, 2, undefined, 4];
-const numbers = values.filter((v) => v !== undefined); // number[], no (number | undefined)[]
+const values = [1, 2, undefined, 4]
+const numbers = values.filter((v) => v !== undefined) // number[], no (number | undefined)[]
 ```
 
 La 5.5 también añadió comprobación de sintaxis en expresiones regulares, detectando patrones mal formados o funciones no soportadas para el target de compilación en tiempo de compilación en lugar de en tiempo de ejecución.
@@ -90,10 +90,10 @@ También llegó en la 5.4: si una variable `let` solo se asigna una vez antes de
 TypeScript 5.9 añadió soporte de tipado para la propuesta `import defer`, que permite importar un módulo sin evaluarlo hasta que se accede realmente a una de sus exportaciones. Está pensado para módulos costosos o específicos de plataforma que no deberían ejecutarse a menos que sean necesarios.
 
 ```ts
-import defer * as feature from "./expensive-feature.js";
+import defer * as feature from './expensive-feature.js'
 
 if (shouldEnableFeature()) {
-  feature.run(); // el cuerpo del módulo solo se ejecuta aquí
+  feature.run() // el cuerpo del módulo solo se ejecuta aquí
 }
 ```
 

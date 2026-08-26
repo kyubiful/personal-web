@@ -6,7 +6,7 @@ author: 'Sergio Zabala'
 image:
   url: '/placeholder.webp'
   alt: 'Bun and Node.js logos side by side, representing a JavaScript runtime comparison.'
-tags: ["JavaScript", "Bun", "NodeJS"]
+tags: ['JavaScript', 'Bun', 'NodeJS']
 transitionSlug: 'bun-vs-nodejs-runtime'
 ---
 

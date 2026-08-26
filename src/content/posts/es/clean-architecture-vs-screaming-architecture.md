@@ -6,15 +6,15 @@ author: 'Sergio Zabala'
 image:
   url: '/placeholder.webp'
   alt: 'Diagrama comparando una estructura de carpetas por capas con una estructura orientada a casos de uso.'
-tags: ["Software Architecture", "Best Practices"]
+tags: ['Software Architecture', 'Best Practices']
 transitionSlug: 'clean-architecture-vs-screaming-architecture'
 ---
 
 ## Dos ideas, un mismo autor
 
-Robert C. Martin ("Uncle Bob") presentó ambos conceptos en su blog. En [Screaming Architecture](https://blog.cleancoder.com/uncle-bob/2011/09/30/Screaming-Architecture.html) (2011) plantea una pregunta sencilla pero incómoda: si miras la estructura de carpetas de primer nivel de tu proyecto, ¿te dice qué *hace* la aplicación, o solo qué framework usa? Un año después, en [The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) (2012), formalizó las capas y reglas de dependencia que hacen posible ese tipo de estructura.
+Robert C. Martin ("Uncle Bob") presentó ambos conceptos en su blog. En [Screaming Architecture](https://blog.cleancoder.com/uncle-bob/2011/09/30/Screaming-Architecture.html) (2011) plantea una pregunta sencilla pero incómoda: si miras la estructura de carpetas de primer nivel de tu proyecto, ¿te dice qué _hace_ la aplicación, o solo qué framework usa? Un año después, en [The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) (2012), formalizó las capas y reglas de dependencia que hacen posible ese tipo de estructura.
 
-No son ideas que compitan entre sí: Screaming Architecture es el *resultado visible* de aplicar Clean Architecture correctamente. Una te dice *por qué* tus carpetas deberían verse de cierta forma; la otra te dice *cómo* llegar hasta ahí.
+No son ideas que compitan entre sí: Screaming Architecture es el _resultado visible_ de aplicar Clean Architecture correctamente. Una te dice _por qué_ tus carpetas deberían verse de cierta forma; la otra te dice _cómo_ llegar hasta ahí.
 
 ## Screaming Architecture: lo que tus carpetas dicen de ti
 
@@ -24,7 +24,7 @@ La analogía de Martin es arquitectónica en el sentido literal: cuando miras lo
 
 La mayoría de los proyectos no pasan esta prueba. Abre un proyecto típico de Node.js o Rails y lo primero que ves es `controllers/`, `models/`, `services/`, `routes/`: un organigrama de roles técnicos, no una descripción del negocio. No puedes saber si es un sistema de facturación o un blog hasta que bajas varios niveles de carpetas.
 
-El punto de Martin es que el framework, la base de datos y la propia web son *detalles*: decisiones que deberían poder postergarse. Un sistema bien estructurado te permite decidir más tarde entre Express o Fastify, entre Postgres o Mongo, sin tocar la lógica de negocio.
+El punto de Martin es que el framework, la base de datos y la propia web son _detalles_: decisiones que deberían poder postergarse. Un sistema bien estructurado te permite decidir más tarde entre Express o Fastify, entre Postgres o Mongo, sin tocar la lógica de negocio.
 
 ## Clean Architecture: el mecanismo detrás del grito
 
@@ -61,7 +61,7 @@ Nada de esto grita "plataforma de e-commerce". Para entender qué hace realmente
 
 ## Después: una estructura orientada a casos de uso
 
-Reorganizado según lo que el sistema *hace*, siguiendo la Dependency Rule:
+Reorganizado según lo que el sistema _hace_, siguiendo la Dependency Rule:
 
 ```
 src/

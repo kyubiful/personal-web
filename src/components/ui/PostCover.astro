@@ -17,10 +17,15 @@ const { Icon, label, colorClass, chipClass } = getPostCoverIcon(tags)
     className
   )}
 >
-  <div class="h-11 flex items-center justify-center">
+  <div class='h-11 flex items-center justify-center'>
     {
       chipClass ? (
-        <div class={cn('w-11 h-11 rounded-[10px] flex items-center justify-center', chipClass)}>
+        <div
+          class={cn(
+            'w-11 h-11 rounded-[10px] flex items-center justify-center',
+            chipClass
+          )}
+        >
           <Icon size={26} class={colorClass} />
         </div>
       ) : (
@@ -28,15 +33,23 @@ const { Icon, label, colorClass, chipClass } = getPostCoverIcon(tags)
       )
     }
   </div>
-  <span class="text-lg font-bold text-slate-900 dark:text-slate-200">{label}</span>
+  <span class='text-lg font-bold text-slate-900 dark:text-slate-200'
+    >{label}</span
+  >
 </div>
 
 <style>
   .post-cover {
-    background-image: radial-gradient(rgba(31, 41, 55, 0.14) 1px, transparent 1px);
+    background-image: radial-gradient(
+      rgba(31, 41, 55, 0.14) 1px,
+      transparent 1px
+    );
     background-size: 14px 14px;
   }
   :global(.dark) .post-cover {
-    background-image: radial-gradient(rgba(243, 244, 246, 0.14) 1px, transparent 1px);
+    background-image: radial-gradient(
+      rgba(243, 244, 246, 0.14) 1px,
+      transparent 1px
+    );
   }
 </style>

@@ -83,7 +83,7 @@
   ],
   "certifications.title": "Certificaciones",
   "certifications.list": [
-        {
+    {
       "name": "Claude Certified Architect - Foundations",
       "issuer": "Anthropic",
       "date": "Jun 2026",

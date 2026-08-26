@@ -6,7 +6,7 @@ author: 'Sergio Zabala'
 image:
   url: '/typescript.webp'
   alt: 'TypeScript logo.'
-tags: ["TypeScript", "JavaScript"]
+tags: ['TypeScript', 'JavaScript']
 transitionSlug: 'typescript-7-0-native-go-compiler'
 ---
 

@@ -6,7 +6,7 @@ author: 'Sergio Zabala'
 image:
   url: '/placeholder.webp'
   alt: 'Ventana de terminal con un asistente de IA ejecutando comandos.'
-tags: ["AI", "Developer Tools"]
+tags: ['AI', 'Developer Tools']
 transitionSlug: 'ai-coding-assistants-workflow'
 ---
 

@@ -6,7 +6,7 @@ author: 'Sergio Zabala'
 image:
   url: '/placeholder.webp'
   alt: 'Diagram of a single trunk branch with short-lived commits merging directly into main.'
-tags: ["Software Development", "Git", "Best Practices"]
+tags: ['Software Development', 'Git', 'Best Practices']
 transitionSlug: 'trunk-based-development-feature-flags'
 ---
 
@@ -14,7 +14,7 @@ transitionSlug: 'trunk-based-development-feature-flags'
 
 Git-flow was designed for a world of scheduled releases: `develop`, `release/*`, `feature/*`, and `hotfix/*` branches all exist to isolate work until it is "ready." The trade-off is that isolation is exactly what delays integration. A feature branch that lives for weeks accumulates drift against `main`, and the eventual merge becomes a high-risk event instead of a routine one.
 
-Google's own engineering culture calls this out directly. In *Software Engineering at Google*, the authors describe teams becoming "addicted to dev branches": they notice that merging large branches destabilizes the codebase, then wrongly conclude the fix is more branch isolation rather than less. The result is escalating overhead — dedicated merge coordination, "Build Master" rotations, and release-branch bureaucracy that the book flatly calls "pure overhead."
+Google's own engineering culture calls this out directly. In _Software Engineering at Google_, the authors describe teams becoming "addicted to dev branches": they notice that merging large branches destabilizes the codebase, then wrongly conclude the fix is more branch isolation rather than less. The result is escalating overhead — dedicated merge coordination, "Build Master" rotations, and release-branch bureaucracy that the book flatly calls "pure overhead."
 
 ## What Trunk-Based Development Actually Is
 
@@ -35,9 +35,9 @@ Martin Fowler's canonical explanation is that a [feature toggle](https://martinf
 
 ```js
 if (featureFlags.newCheckoutFlow) {
-  renderNewCheckout();
+  renderNewCheckout()
 } else {
-  renderLegacyCheckout();
+  renderLegacyCheckout()
 }
 ```
 

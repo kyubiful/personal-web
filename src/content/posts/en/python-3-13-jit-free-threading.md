@@ -1,12 +1,12 @@
 ---
-title: "Python 3.13: The Experimental JIT and Free-Threaded (No-GIL) Mode"
+title: 'Python 3.13: The Experimental JIT and Free-Threaded (No-GIL) Mode'
 pubDate: 2026-07-28
-description: 'Python 3.13 shipped two experimental, opt-in features that attack the interpreter''s two oldest performance limits at once: a copy-and-patch JIT compiler and a free-threaded build that can disable the GIL. Here''s what each one actually does, how to try them today, and where they still bite.'
+description: "Python 3.13 shipped two experimental, opt-in features that attack the interpreter's two oldest performance limits at once: a copy-and-patch JIT compiler and a free-threaded build that can disable the GIL. Here's what each one actually does, how to try them today, and where they still bite."
 author: 'Sergio Zabala'
 image:
   url: '/python.webp'
   alt: 'Python logo.'
-tags: ["Python"]
+tags: ['Python']
 transitionSlug: 'python-3-13-jit-free-threading'
 ---
 

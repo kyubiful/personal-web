@@ -6,7 +6,7 @@ author: 'Sergio Zabala'
 image:
   url: '/nodejs.webp'
   alt: 'NodeJS logo.'
-tags: ["NodeJS", "JavaScript"]
+tags: ['NodeJS', 'JavaScript']
 transitionSlug: 'node-v21-7-released'
 ---
 

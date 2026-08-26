@@ -4,15 +4,15 @@ pubDate: 2024-03-14
 description: 'Descubre cómo NodeJS transforma el desarrollo con sus últimas actualizaciones: gestión nativa de variables de entorno y coloración de consola sin dependencias externas. Estas innovaciones simplifican el flujo de trabajo y marcan el camino hacia un futuro más eficiente y minimalista en la programación.'
 author: 'Sergio Zabala'
 image:
-    url: '/nodejs.webp'
-    alt: 'Logotipo de NodeJS'
-tags: ["NodeJS", "JavaScript"]
+  url: '/nodejs.webp'
+  alt: 'Logotipo de NodeJS'
+tags: ['NodeJS', 'JavaScript']
 transitionSlug: 'node-v21-7-released'
 ---
 
 ## Adiós a la dependencia de dotenv
 
-La primera actualización nos trae nativamente la gestión de variables de entorno sin necesidad de dependencias. 
+La primera actualización nos trae nativamente la gestión de variables de entorno sin necesidad de dependencias.
 
 Ahora con la función `process.loadEnvFile()` podremos cargar variables de entorno directamente sin necesidad de especificar manualmente el archivo `.env` a cargar.
 

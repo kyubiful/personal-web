@@ -6,7 +6,7 @@ author: 'Sergio Zabala'
 image:
   url: '/placeholder.webp'
   alt: 'Ilustración que representa un modelo de visión y lenguaje local para codificación agéntica.'
-tags: ["AI", "LLM", "Open Source"]
+tags: ['AI', 'LLM', 'Open Source']
 transitionSlug: 'qwen3-8-27b-local-agentic-coding'
 ---
 

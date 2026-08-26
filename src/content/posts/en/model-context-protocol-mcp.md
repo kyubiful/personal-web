@@ -6,7 +6,7 @@ author: 'Sergio Zabala'
 image:
   url: '/placeholder.webp'
   alt: 'Diagram of an AI application connecting to external tools through the Model Context Protocol.'
-tags: ["AI", "LLM", "MCP"]
+tags: ['AI', 'LLM', 'MCP']
 transitionSlug: 'model-context-protocol-mcp'
 ---
 
@@ -43,11 +43,11 @@ Underneath both transports, MCP exchanges JSON-RPC 2.0 messages — the transpor
 
 An MCP server can offer three kinds of primitives, each with a different "who's driving":
 
-| Primitive | What it is | Who controls it |
-|---|---|---|
-| **Tools** | Executable functions with a JSON Schema for their inputs — e.g. `searchFlights`, `sendEmail`. The model decides when to call them. | The model |
+| Primitive     | What it is                                                                                                                                    | Who controls it |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| **Tools**     | Executable functions with a JSON Schema for their inputs — e.g. `searchFlights`, `sendEmail`. The model decides when to call them.            | The model       |
 | **Resources** | Read-only data identified by a URI, like `file:///report.pdf` or `calendar://events/2026`. The application decides how to fetch and use them. | The application |
-| **Prompts** | Reusable, parameterized templates (e.g. "plan a vacation") that combine specific tools and resources into a guided workflow. | The user |
+| **Prompts**   | Reusable, parameterized templates (e.g. "plan a vacation") that combine specific tools and resources into a guided workflow.                  | The user        |
 
 A client discovers what a server offers through list methods (`tools/list`, `resources/list`, `prompts/list`) before ever calling anything, so the available surface can change at runtime and servers can notify clients when it does.
 

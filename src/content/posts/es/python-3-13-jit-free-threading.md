@@ -1,12 +1,12 @@
 ---
-title: "Python 3.13: el JIT experimental y el modo Free-Threaded (sin GIL)"
+title: 'Python 3.13: el JIT experimental y el modo Free-Threaded (sin GIL)'
 pubDate: 2026-07-28
 description: 'Python 3.13 llegó con dos funcionalidades experimentales y opcionales que atacan a la vez las dos limitaciones históricas del intérprete: un compilador JIT basado en copy-and-patch y una compilación libre de hilos que puede desactivar el GIL. Esto es lo que hace cada una, cómo probarlas hoy mismo y dónde todavía dan problemas.'
 author: 'Sergio Zabala'
 image:
   url: '/python.webp'
   alt: 'Python logo.'
-tags: ["Python"]
+tags: ['Python']
 transitionSlug: 'python-3-13-jit-free-threading'
 ---
 

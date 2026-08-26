@@ -6,7 +6,7 @@ author: 'Sergio Zabala'
 image:
   url: '/placeholder.webp'
   alt: 'Diagrama de una aplicación de IA conectándose a herramientas externas mediante el Model Context Protocol.'
-tags: ["AI", "LLM", "MCP"]
+tags: ['AI', 'LLM', 'MCP']
 transitionSlug: 'model-context-protocol-mcp'
 ---
 
@@ -43,11 +43,11 @@ Debajo de ambos transportes, MCP intercambia mensajes JSON-RPC 2.0; el transport
 
 Un servidor MCP puede ofrecer tres tipos de primitivas, cada una con un "quién decide" distinto:
 
-| Primitiva | Qué es | Quién la controla |
-|---|---|---|
-| **Tools** | Funciones ejecutables con un JSON Schema para sus entradas, por ejemplo `searchFlights` o `sendEmail`. El modelo decide cuándo llamarlas. | El modelo |
-| **Resources** | Datos de solo lectura identificados por una URI, como `file:///informe.pdf` o `calendar://events/2026`. La aplicación decide cómo obtenerlos y usarlos. | La aplicación |
-| **Prompts** | Plantillas reutilizables y parametrizadas (por ejemplo, "planificar unas vacaciones") que combinan tools y resources concretos en un flujo de trabajo guiado. | El usuario |
+| Primitiva     | Qué es                                                                                                                                                        | Quién la controla |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| **Tools**     | Funciones ejecutables con un JSON Schema para sus entradas, por ejemplo `searchFlights` o `sendEmail`. El modelo decide cuándo llamarlas.                     | El modelo         |
+| **Resources** | Datos de solo lectura identificados por una URI, como `file:///informe.pdf` o `calendar://events/2026`. La aplicación decide cómo obtenerlos y usarlos.       | La aplicación     |
+| **Prompts**   | Plantillas reutilizables y parametrizadas (por ejemplo, "planificar unas vacaciones") que combinan tools y resources concretos en un flujo de trabajo guiado. | El usuario        |
 
 Un cliente descubre lo que ofrece un servidor mediante métodos de listado (`tools/list`, `resources/list`, `prompts/list`) antes de llamar a nada, así que la superficie disponible puede cambiar en tiempo de ejecución y el servidor puede notificar al cliente cuando eso ocurre.
 

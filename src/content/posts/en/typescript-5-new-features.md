@@ -6,7 +6,7 @@ author: 'Sergio Zabala'
 image:
   url: '/typescript.webp'
   alt: 'TypeScript logo.'
-tags: ["TypeScript", "JavaScript"]
+tags: ['TypeScript', 'JavaScript']
 transitionSlug: 'typescript-5-new-features'
 ---
 
@@ -19,15 +19,15 @@ TypeScript 5.0 replaced the old experimental decorators with an implementation o
 ```ts
 function logged(target: Function, context: ClassMethodDecoratorContext) {
   return function (this: unknown, ...args: unknown[]) {
-    console.log(`Calling ${String(context.name)}`);
-    return target.apply(this, args);
-  };
+    console.log(`Calling ${String(context.name)}`)
+    return target.apply(this, args)
+  }
 }
 
 class Greeter {
   @logged
   greet(name: string) {
-    return `Hello, ${name}!`;
+    return `Hello, ${name}!`
   }
 }
 ```
@@ -38,10 +38,10 @@ Also from 5.0, adding `const` to a generic type parameter tells the compiler to 
 
 ```ts
 function tuple<const T extends readonly unknown[]>(...items: T): T {
-  return items;
+  return items
 }
 
-const point = tuple(10, 20); // readonly [10, 20], not number[]
+const point = tuple(10, 20) // readonly [10, 20], not number[]
 ```
 
 ## using Declarations for Resource Management
@@ -50,8 +50,8 @@ TypeScript 5.2 introduced `using` and `await using`, implementing the Explicit R
 
 ```ts
 function readFile(path: string) {
-  using handle = openFile(path); // disposed automatically
-  return handle.read();
+  using handle = openFile(path) // disposed automatically
+  return handle.read()
 } // handle.close() runs here, even on an early return or throw
 ```
 
@@ -67,7 +67,7 @@ function createStreetLight<T extends string>(
   // ...
 }
 
-createStreetLight(["red", "yellow", "green"], "blue"); // error: "blue" is not a known color
+createStreetLight(['red', 'yellow', 'green'], 'blue') // error: "blue" is not a known color
 ```
 
 ## Inferred Type Predicates
@@ -75,8 +75,8 @@ createStreetLight(["red", "yellow", "green"], "blue"); // error: "blue" is not a
 TypeScript 5.5 made array filtering "just work" for narrowing. A function like `(x) => x !== undefined` used inside `.filter()` is now automatically recognized as a type guard, so you no longer need to annotate it by hand.
 
 ```ts
-const values = [1, 2, undefined, 4];
-const numbers = values.filter((v) => v !== undefined); // number[], not (number | undefined)[]
+const values = [1, 2, undefined, 4]
+const numbers = values.filter((v) => v !== undefined) // number[], not (number | undefined)[]
 ```
 
 5.5 also added regular expression syntax checking, catching malformed patterns and unsupported features for your target at compile time instead of at runtime.
@@ -90,10 +90,10 @@ Also shipped in 5.4: if a `let` variable is only ever assigned once before a clo
 TypeScript 5.9 added type-checking support for the `import defer` proposal, which lets you import a module without evaluating it until one of its exports is actually accessed. It's aimed at expensive or platform-specific modules that shouldn't run unless they're needed.
 
 ```ts
-import defer * as feature from "./expensive-feature.js";
+import defer * as feature from './expensive-feature.js'
 
 if (shouldEnableFeature()) {
-  feature.run(); // module body only executes here
+  feature.run() // module body only executes here
 }
 ```
 

@@ -6,7 +6,7 @@ author: 'Sergio Zabala'
 image:
   url: '/python.webp'
   alt: 'Python logo.'
-tags: ["Python", "Tooling"]
+tags: ['Python', 'Tooling']
 transitionSlug: 'uv-python-package-manager'
 ---
 

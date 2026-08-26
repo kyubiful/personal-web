@@ -6,7 +6,7 @@ author: 'Sergio Zabala'
 image:
   url: '/placeholder.webp'
   alt: 'Illustration representing a local vision-language model for agentic coding.'
-tags: ["AI", "LLM", "Open Source"]
+tags: ['AI', 'LLM', 'Open Source']
 transitionSlug: 'qwen3-8-27b-local-agentic-coding'
 ---
 

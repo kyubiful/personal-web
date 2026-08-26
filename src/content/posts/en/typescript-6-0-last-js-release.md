@@ -6,7 +6,7 @@ author: 'Sergio Zabala'
 image:
   url: '/typescript.webp'
   alt: 'TypeScript logo.'
-tags: ["TypeScript", "JavaScript"]
+tags: ['TypeScript', 'JavaScript']
 transitionSlug: 'typescript-6-0-last-js-release'
 ---
 
@@ -21,7 +21,7 @@ That framing matters more than any single feature in this release. TypeScript 6.
 **Temporal API support.** The Stage 4 `Temporal` proposal is now part of TypeScript's built-in types when you target `esnext`:
 
 ```ts
-const yesterday = Temporal.Now.instant().subtract({ hours: 24 });
+const yesterday = Temporal.Now.instant().subtract({ hours: 24 })
 ```
 
 **ES2025 as a target and lib option.** You can now set `"target": "es2025"` or add `"es2025"` to `lib`, which brings in `RegExp.escape()`, `Promise.try()`, new iterator helpers, and additional `Set` methods.
@@ -29,9 +29,9 @@ const yesterday = Temporal.Now.instant().subtract({ hours: 24 });
 **Map/WeakMap "upsert" methods**, available via the `esnext` lib:
 
 ```ts
-const cache = new Map<string, number>();
-cache.getOrInsert("hits", 0);
-cache.getOrInsertComputed("misses", () => expensiveDefault());
+const cache = new Map<string, number>()
+cache.getOrInsert('hits', 0)
+cache.getOrInsertComputed('misses', () => expensiveDefault())
 ```
 
 **Subpath imports starting with `#/`.** Combined with `nodenext` or `bundler` resolution, you can now alias without extra path segments:
