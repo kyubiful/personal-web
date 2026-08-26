@@ -37,6 +37,8 @@ const currentUrl = getCurrentUrl(Astro.url)
       </li>
       <li>
         <a
+          id='nav-blog-link'
+          data-blog-base={trangraydPath('/blog')}
           href={trangraydPath('/blog')}
           class={cn(
             'transition-all hover:scale-110 font-bold block',
@@ -70,3 +72,12 @@ const currentUrl = getCurrentUrl(Astro.url)
     </ul>
   </nav>
 </header>
+<script is:inline>
+  document.addEventListener('astro:page-load', () => {
+    const link = document.getElementById('nav-blog-link')
+    if (!link) return
+    const base = link.dataset.blogBase
+    const stored = sessionStorage.getItem('blog:lastPage')
+    link.setAttribute('href', stored && stored.startsWith(base) ? stored : base)
+  })
+</script>
