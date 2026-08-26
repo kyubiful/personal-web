@@ -17,9 +17,6 @@ const { Icon, label, colorClass, chipClass } = getPostCoverIcon(tags)
     className
   )}
 >
-  <span class="text-xs text-slate-600 dark:text-slate-300">
-    ~/tags/{tags[0]?.toLowerCase().replace(/\s+/g, '-') ?? 'others'}
-  </span>
   <div class="h-11 flex items-center justify-center">
     {
       chipClass ? (
