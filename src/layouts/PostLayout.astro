@@ -90,14 +90,13 @@ const blogHome = getBlogPageUrl(lang, 1)
       </article>
     </TerminalWindow>
   </ContentLayout>
-  <script is:inline>
-    document.addEventListener('astro:page-load', () => {
-      const link = document.getElementById('post-back-link')
-      if (!link) return
+  <script is:inline data-astro-rerun>
+    const link = document.getElementById('post-back-link')
+    if (link) {
       const base = link.dataset.blogBase
       const stored = sessionStorage.getItem('blog:lastPage')
       link.setAttribute('href', stored && stored.startsWith(base) ? stored : base)
-    })
+    }
   </script>
 </Layout>
 
