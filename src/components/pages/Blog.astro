@@ -87,6 +87,8 @@ const { posts, currentPage, lastPage, prevUrl, nextUrl, pageUrls } = Astro.props
     />
   </ContentLayout>
   <script is:inline data-astro-rerun>
-    sessionStorage.setItem('blog:lastPage', window.location.pathname)
+    ;(() => {
+      sessionStorage.setItem('blog:lastPage', window.location.pathname)
+    })()
   </script>
 </Layout>
