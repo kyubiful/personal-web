@@ -44,7 +44,7 @@
     {
       "name": "Proyecto M",
       "description": "Web creada para seguir un evento de un streamer en Twitch y mostrar información relevante del mismo",
-      "link": "https://proyectom.vercel.app",
+      "link": "",
       "github": "https://github.com/kyubiful/proyecto-m",
       "image": "/projectm.webp",
       "technologies": ["NextJS", "Tailwind CSS", "TypeScript"]
