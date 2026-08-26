@@ -10,12 +10,15 @@ import Typography from '@/components/ui/Typography.astro'
 import Pill from '@/components/ui/Pill.astro'
 import TerminalWindow from '@/components/ui/TerminalWindow.astro'
 
-import { getLangFromUrl } from '@/i18n/utils'
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+import { getBlogPageUrl } from '@/utils/posts'
 
 const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 const titleTransition = 'post-title-' + frontmatter.transitionSlug
 const pillTransition = 'post-pill-' + frontmatter.transitionSlug
 const dateTransition = 'post-date-' + frontmatter.transitionSlug
+const blogHome = getBlogPageUrl(lang, 1)
 ---
 
 <!-- Open Graph -->
@@ -34,6 +37,14 @@ const dateTransition = 'post-date-' + frontmatter.transitionSlug
 
 <Layout title={frontmatter.title} lang={lang}>
   <ContentLayout>
+    <a
+      id='post-back-link'
+      data-blog-base={blogHome}
+      href={blogHome}
+      class='text-xs text-accent-light dark:text-accent-dark hover:-translate-x-0.5 transition-transform w-fit'
+    >
+      {t('blog.back')}
+    </a>
     <TerminalWindow
       path={`~/blog/${frontmatter.transitionSlug}.md`}
       class='w-full'
@@ -79,6 +90,15 @@ const dateTransition = 'post-date-' + frontmatter.transitionSlug
       </article>
     </TerminalWindow>
   </ContentLayout>
+  <script is:inline>
+    document.addEventListener('astro:page-load', () => {
+      const link = document.getElementById('post-back-link')
+      if (!link) return
+      const base = link.dataset.blogBase
+      const stored = sessionStorage.getItem('blog:lastPage')
+      link.setAttribute('href', stored && stored.startsWith(base) ? stored : base)
+    })
+  </script>
 </Layout>
 
 <style is:global>

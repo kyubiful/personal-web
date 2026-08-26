@@ -3,6 +3,7 @@
   "nav.blog": "Blog",
   "blog.pagination.prev": "← Prev",
   "blog.pagination.next": "Next →",
+  "blog.back": "← Back to blog",
   "hero.description": "Senior Full Stack & AI Engineer specialized in React, Next.js and TypeScript, with a focus on Python, FastAPI, LLMs, RAG and AI Agents",
   "hero.mail.arialabel": "Send email",
   "hero.github.arialabel": "GitHub Profile",
