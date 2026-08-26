@@ -22,12 +22,5 @@ const projects = t('projects.list') as Project[]
   <Typography as='h2' variant='h3' color='black'>
     {t('projects.title')}
   </Typography>
-  {
-    projects.map((project, index) => (
-      <Project
-        imagePosition={index % 2 === 0 ? 'right' : 'left'}
-        project={project}
-      />
-    ))
-  }
+  {projects.map((project) => <Project project={project} />)}
 </section>

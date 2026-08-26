@@ -7,6 +7,12 @@ export default {
       boxShadow: {
         borderBlack: '3px 3px 1px 0px rgba(31,41,55,1)',
         borderWhite: '3px 3px 1px 0px rgba(243,244,246,1)'
+      },
+      colors: {
+        accent: {
+          light: '#b0562b',
+          dark: '#e2874f'
+        }
       }
     }
   },

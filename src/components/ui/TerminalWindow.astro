@@ -1,0 +1,35 @@
+---
+import { cn } from '@/utils/cn'
+
+interface Props {
+  path: string
+  class?: string
+  bodyClass?: string
+}
+
+const { path, class: className, bodyClass = 'p-4' } = Astro.props
+---
+
+<div
+  class={cn(
+    'rounded-lg border-2 border-gray-800 dark:border-gray-100 shadow-borderBlack dark:shadow-borderWhite overflow-hidden bg-white dark:bg-slate-800',
+    className
+  )}
+>
+  <div
+    class='flex items-center gap-1.5 px-3 py-2 border-b-2 border-gray-800 dark:border-gray-100 bg-gray-100 dark:bg-slate-700'
+  >
+    <span class='size-2.5 rounded-full bg-[#ff5f57]'></span>
+    <span class='size-2.5 rounded-full bg-[#ffbd2e]'></span>
+    <span class='size-2.5 rounded-full bg-[#28c840]'></span>
+    <span class='ml-2 text-xs text-slate-600 dark:text-slate-300 truncate'>
+      {path}
+    </span>
+    <div class='ml-auto flex items-center'>
+      <slot name='bar-right' />
+    </div>
+  </div>
+  <div class={bodyClass}>
+    <slot />
+  </div>
+</div>

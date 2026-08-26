@@ -1,5 +1,6 @@
 ---
 import Typography from '@/components/ui/Typography.astro'
+import TerminalWindow from '@/components/ui/TerminalWindow.astro'
 
 import { useTranslations, getLangFromUrl } from '@/i18n/utils'
 import Pill from '../ui/Pill.astro'
@@ -12,7 +13,16 @@ const skills = t('skills.list') as string[]
   <Typography as='h2' variant='h3' color='black'>
     {t('skills.title')}
   </Typography>
-  <div class='flex gap-2 flex-wrap'>
-    {skills.map((skill) => <Pill>{skill}</Pill>)}
-  </div>
+  <TerminalWindow path='~/skills'>
+    <div class='flex flex-col gap-3'>
+      <p class='text-xs'>
+        <span class='text-accent-light dark:text-accent-dark font-bold'
+          >$</span
+        > ls
+      </p>
+      <div class='flex gap-2 flex-wrap'>
+        {skills.map((skill) => <Pill>{skill}</Pill>)}
+      </div>
+    </div>
+  </TerminalWindow>
 </section>

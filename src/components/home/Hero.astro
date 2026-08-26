@@ -1,5 +1,6 @@
 ---
 import Typography from '@/components/ui/Typography.astro'
+import TerminalWindow from '@/components/ui/TerminalWindow.astro'
 import GithubIcon from '@/components/icons/Github.astro'
 import LinkedInIcon from '@/components/icons/LinkedIn.astro'
 import MessageIcon from '@/components/icons/Message.astro'
@@ -10,16 +11,31 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 ---
 
-<section class='flex justify-between gap-10 items-center'>
-  <div class='flex flex-col justify-between gap-4'>
-    <Typography as='h1' variant='h3' color='black'>
-      Sergio Zabala Muñoz
-    </Typography>
-    <Typography as='h2' variant='p' color='black' class='text-balance text-sm'>
-      {t('hero.description')}
-    </Typography>
-    <div>
-      <ul class='text-sm flex gap-2'>
+<TerminalWindow path='~/sergio.sh' bodyClass='p-6'>
+  <div class='flex flex-col-reverse md:flex-row justify-between gap-6 md:items-center'>
+    <div class='flex flex-col gap-2'>
+      <p class='text-xs'>
+        <span class='text-accent-light dark:text-accent-dark font-bold'
+          >$</span
+        > whoami
+      </p>
+      <Typography as='h1' variant='h3' color='black'>
+        Sergio Zabala Muñoz
+      </Typography>
+      <p class='text-xs mt-2'>
+        <span class='text-accent-light dark:text-accent-dark font-bold'
+          >$</span
+        > cat role.txt
+      </p>
+      <Typography
+        as='h2'
+        variant='p'
+        color='black'
+        class='text-balance text-sm'
+      >
+        {t('hero.description')}
+      </Typography>
+      <ul class='text-sm flex gap-2 mt-2'>
         <li>
           <a
             href='mailto:sergio.zabala@gmail.com'
@@ -53,11 +69,11 @@ const t = useTranslations(lang)
         </li>
       </ul>
     </div>
+    <img
+      src='/sergio.webp'
+      class='size-28 md:size-32 rounded-md aspect-square object-cover border-2 border-gray-800 dark:border-gray-100 shrink-0 self-center md:self-auto'
+      alt='Sergio Zabala Muñoz'
+      loading='lazy'
+    />
   </div>
-  <img
-    src='/sergio.webp'
-    class='size-32 rounded-md aspect-square border-2 border-gray-800 dark:border-gray-100 shadow-borderBlack dark:shadow-borderWhite'
-    alt='Sergio Zabala Muñoz'
-    loading='lazy'
-  />
-</section>
+</TerminalWindow>

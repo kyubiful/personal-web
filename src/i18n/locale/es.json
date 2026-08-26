@@ -1,31 +1,31 @@
 {
   "nav.home": "Inicio",
   "nav.blog": "Blog",
-  "hero.description": "Ingeniero Full Stack con 3 años de experiencia, dedicado a crear soluciones tecnológicas detalladas y eficientes",
+  "hero.description": "Senior Full Stack & AI Engineer especializado en React, Next.js y TypeScript, con foco en Python, FastAPI, LLMs, RAG y agentes de IA",
   "hero.mail.arialabel": "Enviar correo electrónico",
   "hero.github.arialabel": "Perfil de GitHub",
   "hero.linkedin.arialabel": "Perfil de LinkedIn",
   "about.title": "Sobre mi",
-  "about.description": "Soy un ingeniero de software con 3 años de experiencia en el desarrollo de aplicaciones web y móviles. Me apasiona la tecnología y me encanta aprender cosas nuevas. Me considero una persona autodidacta, responsable y comprometida con mi trabajo. Me gusta trabajar en equipo y siempre estoy dispuesto a ayudar a los demás",
+  "about.description": "Soy Full Stack Developer con 5 años de experiencia construyendo soluciones end-to-end, desde interfaces frontend hasta servicios backend, despliegues y pipelines de automatización. Trabajo principalmente con JavaScript, TypeScript y Python. Además del desarrollo, participo en proyectos de IA aplicada: agentes, sistemas RAG e integraciones con modelos de lenguaje, y tengo experiencia con despliegues, integración de servicios y plataformas de datos como Databricks",
   "experience.title": "Experiencia",
+  "experience.current": "actual",
   "experience.jobs": [
     {
-      "position": "Desarrollador Full Stack",
+      "position": "Full Stack Developer",
       "company": "Diverger",
       "date": "Marzo 2024 - Actualidad",
-      "description": "Desarrollo de aplicaciones web y móviles utilizando tecnologías como HTML, CSS, JavaScript, React, React Native, NodeJS, entre otras"
+      "description": "Desarrollo full stack con JavaScript, TypeScript y Python: diseño e integración de APIs, automatización de despliegues con pipelines CI/CD y participación en proyectos de IA aplicada (agentes, RAG e integraciones con modelos de lenguaje) usando plataformas como Databricks"
     },
     {
-      "position": "Desarrollador Full Stack",
-      "company": "Avantgarde IT",
+      "position": "Desarrollador de front-end",
+      "company": "Avantgarde IT Services",
       "date": "Julio 2022 - Marzo 2024",
       "description": "Desarrollo de aplicaciones web y móviles utilizando tecnologías como HTML, CSS, JavaScript, React, React Native, NodeJS entre otras"
     },
     {
       "position": "Desarrollador Full Stack",
       "company": "Autónomo",
-
-      "date": "Julio 2021 - Julio 2022",
+      "date": "Julio 2021 - Septiembre 2022",
       "description": "Desarrollo de aplicaciones web utilizando tecnologías como HTML, CSS, JavasScript, PHP, React y Laravel"
     }
   ],
@@ -62,12 +62,77 @@
     "CSS",
     "JavaScript",
     "TypeScript",
+    "Python",
     "React",
+    "Next.js",
     "React Native",
     "Tailwind CSS",
     "Node",
+    "FastAPI",
+    "Docker",
+    "Databricks",
     "MySQL",
     "Git",
-    "GitHub"
+    "GitHub",
+    "LLMs",
+    "RAG",
+    "AI Agents"
+  ],
+  "certifications.title": "Certificaciones",
+  "certifications.list": [
+        {
+      "name": "Claude Certified Architect - Foundations",
+      "issuer": "Anthropic",
+      "date": "Jun 2026",
+      "href": "https://verify.skilljar.com/c/egq94rebtdq6"
+    },
+    {
+      "name": "Model Context Protocol: Advanced Topics",
+      "issuer": "Anthropic",
+      "date": "Mar 2026",
+      "href": "https://verify.skilljar.com/c/qg6oyfacfh55"
+    },
+    {
+      "name": "Claude with the Anthropic API",
+      "issuer": "Anthropic",
+      "date": "Mar 2026",
+      "href": "https://verify.skilljar.com/c/xzc7bp54ifrv"
+    },
+    {
+      "name": "Claude Code in Action",
+      "issuer": "Anthropic",
+      "date": "Mar 2026",
+      "href": "https://verify.skilljar.com/c/vog8qtdqr62h"
+    },
+    {
+      "name": "Introduction to Model Context Protocol",
+      "issuer": "Anthropic",
+      "date": "Mar 2026",
+      "href": "https://verify.skilljar.com/c/2m28uj5uvwsz"
+    },
+    {
+      "name": "Introduction to agent skills",
+      "issuer": "Anthropic",
+      "date": "Mar 2026",
+      "href": "https://verify.skilljar.com/c/89u2ayzao2tt"
+    },
+    {
+      "name": "Introduction to subagents",
+      "issuer": "Anthropic",
+      "date": "Mar 2026",
+      "href": "https://verify.skilljar.com/c/dsy3hc858nqv"
+    },
+    {
+      "name": "AI Ready RAG",
+      "issuer": "Diverger",
+      "date": "Mar 2026",
+      "href": "https://www.linkedin.com/in/sergio-zabala-mu%C3%B1oz/overlay/Certifications/1316396646/treasury?profileId=ACoAABXoml4B5m2m_FSylqB8fL0wW8bH0vJCtXU"
+    },
+    {
+      "name": "AI Ready Agents",
+      "issuer": "Diverger",
+      "date": "Feb 2026",
+      "href": "https://www.linkedin.com/in/sergio-zabala-mu%C3%B1oz/overlay/Certifications/1316282425/treasury/?profileId=ACoAABXoml4B5m2m_FSylqB8fL0wW8bH0vJCtXU"
+    }
   ]
 }

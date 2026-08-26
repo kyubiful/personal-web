@@ -1,0 +1,70 @@
+---
+import Typography from '@/components/ui/Typography.astro'
+import TerminalWindow from '@/components/ui/TerminalWindow.astro'
+import { useTranslations, getLangFromUrl } from '@/i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+interface Certification {
+  name: string
+  issuer: string
+  date: string
+  href: string
+}
+
+const certifications = t('certifications.list') as Certification[]
+---
+
+<section class='flex flex-col gap-2'>
+  <Typography as='h2' variant='h3' color='black'>
+    {t('certifications.title')}
+  </Typography>
+  <TerminalWindow path='~/certifications'>
+    <div class='flex flex-col gap-3'>
+      <p class='text-xs'>
+        <span class='text-accent-light dark:text-accent-dark font-bold'
+          >$</span
+        > ls -la
+      </p>
+      <div class='flex flex-col'>
+        {
+          certifications.map((cert) => (
+            <div class='flex flex-wrap justify-between items-baseline gap-x-3 gap-y-0.5 py-2 border-t-2 border-gray-800 dark:border-gray-100 first:border-t-0 first:pt-0'>
+              {cert.href ? (
+                <Typography
+                  as='a'
+                  href={cert.href}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  variant='span'
+                  color='black'
+                  class='font-bold hover:text-accent-light dark:hover:text-accent-dark'
+                >
+                  {cert.name}
+                </Typography>
+              ) : (
+                <Typography
+                  as='span'
+                  variant='span'
+                  color='black'
+                  class='font-bold'
+                >
+                  {cert.name}
+                </Typography>
+              )}
+              <Typography
+                as='span'
+                variant='span'
+                color='black'
+                class='text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap'
+              >
+                {cert.issuer} · {cert.date}
+              </Typography>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </TerminalWindow>
+</section>
