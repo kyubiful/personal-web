@@ -1,12 +1,12 @@
 ---
-import { getCollection } from 'astro:content'
+import { getCollection, render } from 'astro:content'
 import PostLayout from '@/layouts/PostLayout.astro'
 
 export async function getStaticPaths() {
   const pages = await getCollection('posts')
   const paths = pages
     .map((page) => {
-      const [postLang, ...slug] = page.slug.split('/')
+      const [postLang, ...slug] = page.id.split('/')
       if (postLang !== 'es') return
       return {
         params: {
@@ -22,7 +22,7 @@ export async function getStaticPaths() {
 
 const page = Astro.props
 
-const { Content } = await page.render()
+const { Content } = await render(page)
 ---
 
 <PostLayout frontmatter={page.data}>

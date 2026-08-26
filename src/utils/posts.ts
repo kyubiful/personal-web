@@ -12,10 +12,10 @@ export async function getPostsByLang(lang: 'es' | 'en'): Promise<PostListItem[]>
   const allPosts = await getCollection('posts')
 
   return allPosts
-    .filter((post) => post.slug.split('/')[0] === lang)
+    .filter((post) => post.id.split('/')[0] === lang)
     .map((post) => {
-      const slug = post.slug.split('/')[1]
-      const urlLang = post.slug.split('/')[0] === 'en' ? '/en' : ''
+      const slug = post.id.split('/')[1]
+      const urlLang = post.id.split('/')[0] === 'en' ? '/en' : ''
       const url = `${urlLang}/blog/${slug}`
 
       return {

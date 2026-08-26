@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-accent-light: #b0562b;
+  --color-accent-dark: #e2874f;
+
+  --shadow-borderBlack: 3px 3px 1px 0px rgba(31, 41, 55, 1);
+  --shadow-borderWhite: 3px 3px 1px 0px rgba(243, 244, 246, 1);
+}

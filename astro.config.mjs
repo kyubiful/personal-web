@@ -1,9 +1,10 @@
 import { defineConfig } from 'astro/config'
-import tailwind from '@astrojs/tailwind'
-import vercel from '@astrojs/vercel/static'
+import tailwindcss from '@tailwindcss/vite'
+import vercel from '@astrojs/vercel'
 
 // https://astro.build/config
 export default defineConfig({
+  output: 'static',
   i18n: {
     locales: ['es', 'en'],
     defaultLocale: 'es',
@@ -16,7 +17,9 @@ export default defineConfig({
       theme: 'one-dark-pro'
     }
   },
-  integrations: [tailwind()],
+  vite: {
+    plugins: [tailwindcss()]
+  },
   adapter: vercel({
     webAnalytics: {
       enabled: true
