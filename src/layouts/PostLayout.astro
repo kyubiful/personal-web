@@ -8,6 +8,7 @@ import Layout from '@/layouts/Layout.astro'
 // Components
 import Typography from '@/components/ui/Typography.astro'
 import Pill from '@/components/ui/Pill.astro'
+import TerminalWindow from '@/components/ui/TerminalWindow.astro'
 
 import { getLangFromUrl } from '@/i18n/utils'
 
@@ -33,38 +34,63 @@ const dateTransition = 'post-date-' + frontmatter.transitionSlug
 
 <Layout title={frontmatter.title} lang={lang}>
   <ContentLayout>
-    <article class='flex flex-col gap-10 items-center'>
-      <img
-        src={frontmatter.image.url}
-        alt={frontmatter.image.alt}
-        class='shadow-borderBlack dark:shadow-borderWhite border-2 border-gray-800 dark:border-gray-200 rounded-lg m-auto flex flex-col gap-4 w-full aspect-video object-cover'
-      />
-      <div class='flex flex-col gap-10 max-w-prose'>
-        <section class='flex flex-col gap-4 p-2 md:p-0'>
-          <Typography variant='h1' as='h1' transition:name={titleTransition}>
-            {frontmatter.title}
-          </Typography>
-          <div class='flex gap-2' transition:name={pillTransition}>
-            {frontmatter.tags.map((tag: string) => <Pill>{tag}</Pill>)}
-          </div>
-          <section class='flex gap-2' transition:name={dateTransition}>
-            <Typography variant='p' as='p' class='capitalize'>
-              {
-                frontmatter.pubDate.toLocaleString(
-                  lang === 'en' ? 'en-US' : 'es-ES',
-                  { day: 'numeric', month: 'short', year: 'numeric' }
-                )
-              }
-              - {frontmatter.author}
+    <TerminalWindow
+      path={`~/blog/${frontmatter.transitionSlug}.md`}
+      class='w-full'
+      bodyClass='p-4 sm:p-8'
+    >
+      <article class='flex flex-col gap-10 items-center'>
+        <img
+          src={frontmatter.image.url}
+          alt={frontmatter.image.alt}
+          class='shadow-borderBlack dark:shadow-borderWhite border-2 border-gray-800 dark:border-gray-200 rounded-lg m-auto flex flex-col gap-4 w-full aspect-video object-cover'
+        />
+        <div class='flex flex-col gap-10 max-w-prose min-w-0 w-full'>
+          <section class='flex flex-col gap-4 p-2 md:p-0 min-w-0'>
+            <Typography
+              variant='h1'
+              as='h1'
+              class='text-2xl sm:text-4xl'
+              transition:name={titleTransition}
+            >
+              {frontmatter.title}
             </Typography>
+            <div class='flex gap-2' transition:name={pillTransition}>
+              {frontmatter.tags.map((tag: string) => <Pill>{tag}</Pill>)}
+            </div>
+            <section class='flex gap-2' transition:name={dateTransition}>
+              <Typography variant='p' as='p' class='capitalize'>
+                {
+                  frontmatter.pubDate.toLocaleString(
+                    lang === 'en' ? 'en-US' : 'es-ES',
+                    { day: 'numeric', month: 'short', year: 'numeric' }
+                  )
+                }
+                - {frontmatter.author}
+              </Typography>
+            </section>
           </section>
-        </section>
-        <div
-          class='prose prose-sm md:prose-base prose-slate dark:prose-invert p-2 sm:p-0 w-screen'
-        >
-          <slot />
+          <div
+            class='prose prose-sm md:prose-base prose-slate dark:prose-invert max-w-none min-w-0 break-words p-2 sm:p-0'
+          >
+            <slot />
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </TerminalWindow>
   </ContentLayout>
 </Layout>
+
+<style is:global>
+  .prose pre {
+    border-width: 2px;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border-color: rgb(31 41 55);
+    box-shadow: 3px 3px 1px 0px rgba(31, 41, 55, 1);
+  }
+  .dark .prose pre {
+    border-color: rgb(243 244 246);
+    box-shadow: 3px 3px 1px 0px rgba(243, 244, 246, 1);
+  }
+</style>
