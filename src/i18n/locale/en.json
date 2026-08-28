@@ -1,6 +1,8 @@
 {
   "nav.home": "Home",
   "nav.blog": "Blog",
+  "meta.home.description": "Sergio Zabala Muñoz, Senior Full Stack & AI Engineer specialized in React, Next.js, TypeScript and Python, with experience in LLMs, RAG and AI agents.",
+  "meta.blog.description": "Articles about artificial intelligence, AI agents, software architecture and developer tools like TypeScript, Python and Node.",
   "blog.pagination.prev": "← Prev",
   "blog.pagination.next": "Next →",
   "blog.back": "← Back to blog",

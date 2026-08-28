@@ -4,9 +4,10 @@ import { getLangFromUrl } from '@/i18n/utils'
 import ContentLayout from '@/layouts/ContentLayout.astro'
 
 const lang = getLangFromUrl(Astro.url)
+const description = lang === 'en' ? 'Page not found.' : 'Página no encontrada.'
 ---
 
-<Layout title='Blog' lang={lang}>
+<Layout title='404' description={description} lang={lang}>
   <ContentLayout>
     <p>404 Not Found</p>
   </ContentLayout>

@@ -11,9 +11,50 @@ import Skills from '@/components//home/Skills.astro'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
+const description = t('meta.home.description') as string
+const ogImage = new URL('/sergio.webp', Astro.site).toString()
+const ogUrl = new URL(Astro.url.pathname, Astro.site).toString()
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      name: 'Sergio Zabala Muñoz',
+      url: Astro.site?.toString(),
+      sameAs: [
+        'https://linkedin.com/in/sergio-zabala-muñoz',
+        'https://github.com/kyubiful'
+      ]
+    },
+    {
+      '@type': 'WebSite',
+      name: 'Sergio Zabala Muñoz',
+      url: Astro.site?.toString()
+    }
+  ]
+}
 ---
 
-<Layout title={t('nav.home') as string} lang={lang}>
+<Layout title={t('nav.home') as string} description={description} lang={lang}>
+  <Fragment slot='head'>
+    <meta property='og:title' content='Sergio Zabala Muñoz' />
+    <meta property='og:description' content={description} />
+    <meta property='og:type' content='website' />
+    <meta property='og:url' content={ogUrl} />
+    <meta property='og:image' content={ogImage} />
+
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta name='twitter:title' content='Sergio Zabala Muñoz' />
+    <meta name='twitter:description' content={description} />
+    <meta name='twitter:image' content={ogImage} />
+
+    <script
+      type='application/ld+json'
+      is:inline
+      set:html={JSON.stringify(jsonLd)}
+    />
+  </Fragment>
   <ContentLayout>
     <Hero />
     <AboutMe />
