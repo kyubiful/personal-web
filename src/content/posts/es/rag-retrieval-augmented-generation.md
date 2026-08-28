@@ -22,11 +22,11 @@ El beneficio práctico para quien construye aplicaciones: puedes fundamentar las
 
 Un sistema RAG típico en producción tiene cinco etapas:
 
-1. **Chunking** — dividir los documentos fuente en fragmentos más pequeños, porque no conviene (ni es posible) convertir un documento entero en un solo vector.
-2. **Embeddings** — convertir cada fragmento en un vector denso mediante un modelo de embeddings.
-3. **Búsqueda vectorial** — en el momento de la consulta, se genera el embedding de la pregunta del usuario y se recuperan los fragmentos más cercanos de un índice vectorial (o se combina con búsqueda por palabras clave tipo BM25).
-4. **Re-ranking** — los candidatos recuperados, junto con la consulta original, pasan por un modelo más costoso pero más preciso que los reordena según relevancia real.
-5. **Ensamblado del prompt** — los fragmentos mejor rankeados se insertan en la ventana de contexto del LLM junto con la pregunta del usuario, y se genera la respuesta final.
+1. **Chunking**: dividir los documentos fuente en fragmentos más pequeños, porque no conviene (ni es posible) convertir un documento entero en un solo vector.
+2. **Embeddings**: convertir cada fragmento en un vector denso mediante un modelo de embeddings.
+3. **Búsqueda vectorial**: en el momento de la consulta, se genera el embedding de la pregunta del usuario y se recuperan los fragmentos más cercanos de un índice vectorial (o se combina con búsqueda por palabras clave tipo BM25).
+4. **Re-ranking**: los candidatos recuperados, junto con la consulta original, pasan por un modelo más costoso pero más preciso que los reordena según relevancia real.
+5. **Ensamblado del prompt**: los fragmentos mejor rankeados se insertan en la ventana de contexto del LLM junto con la pregunta del usuario, y se genera la respuesta final.
 
 ```
 consulta ──► embedding ──► búsqueda vectorial (top-k) ──► re-ranking (top-n) ──► ensamblado de prompt ──► respuesta del LLM

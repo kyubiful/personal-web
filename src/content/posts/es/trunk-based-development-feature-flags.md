@@ -45,10 +45,10 @@ El código de `newCheckoutFlow` puede integrarse en `main` en incrementos peque�
 
 Fowler clasifica los toggles según su propósito, y vale la pena conocer la distinción porque afecta cuánto tiempo debería vivir un flag:
 
-- **Release toggles** — ocultan trabajo en curso, pensados para ser de corta duración y eliminarse una vez lanzada la feature.
-- **Experiment toggles** — impulsan tests A/B, viven solo mientras dura el experimento.
-- **Ops toggles** — dan a los operadores un interruptor de emergencia en tiempo de ejecución, pueden vivir indefinidamente.
-- **Permissioning toggles** — habilitan features según segmento de usuario (por ejemplo, usuarios beta, planes de pago), a menudo de larga duración por diseño.
+- **Release toggles**: ocultan trabajo en curso, pensados para ser de corta duración y eliminarse una vez lanzada la feature.
+- **Experiment toggles**: impulsan tests A/B, viven solo mientras dura el experimento.
+- **Ops toggles**: dan a los operadores un interruptor de emergencia en tiempo de ejecución, pueden vivir indefinidamente.
+- **Permissioning toggles**: habilitan features según segmento de usuario (por ejemplo, usuarios beta, planes de pago), a menudo de larga duración por diseño.
 
 Los release toggles —los que sustituyen a las ramas de feature de git-flow— son los que más necesitan un plan de limpieza.
 

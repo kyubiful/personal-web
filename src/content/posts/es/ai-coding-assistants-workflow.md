@@ -18,7 +18,7 @@ transitionSlug: 'ai-coding-assistants-workflow'
 
 El núcleo de GitHub Copilot es el autocompletado de código. Mientras escribes en el editor, Copilot muestra sugerencias en "texto fantasma atenuado en la posición actual del cursor", que aceptas con `Tab` o ignoras sin más. Estas sugerencias pueden ser un solo símbolo, una línea completa o varias líneas, y también puedes activarlas escribiendo un comentario en lenguaje natural que describa lo que quieres hacer. Es una asistencia reactiva: Copilot propone, tú revisas cada sugerencia en el sitio, y nada llega al código sin que la aceptes explícitamente.
 
-Ese modelo reactivo es también su límite. El autocompletado en línea trabaja dentro del archivo que estás editando, una sugerencia a la vez — no planifica un cambio que toque varios archivos, no ejecuta tu suite de tests ni abre un pull request por su cuenta.
+Ese modelo reactivo es también su límite. El autocompletado en línea trabaja dentro del archivo que estás editando, una sugerencia a la vez: no planifica un cambio que toque varios archivos, no ejecuta tu suite de tests ni abre un pull request por su cuenta.
 
 ## Asistentes agénticos de terminal: qué hace Claude Code en realidad
 
@@ -35,7 +35,7 @@ Claude Code también se integra directamente con git (staging de cambios, mensaj
 
 ## Copilot también tiene su propia capa agéntica
 
-Vale la pena aclarar que Copilot ya no es solo autocompletado en línea. GitHub le ha añadido capas agénticas encima: un "agent mode" dentro del IDE para ediciones interactivas de varios archivos, y un **Copilot coding agent** independiente que corre de forma asíncrona en la nube. Este coding agent se activa desde un issue de GitHub, una mención `@` en un pull request o un prompt en Copilot Chat, y trabaja dentro de "su propio entorno de desarrollo efímero, impulsado por GitHub Actions" — investiga el repositorio, hace cambios en una rama, ejecuta tests y linters, y abre un pull request para revisión, con una ventana máxima de ejecución de 59 minutos por tarea. Así que la comparación honesta no es "Copilot contra herramientas agénticas": es autocompletado contra modo agente, sin importar en cuál de las dos herramientas lo encuentres.
+Vale la pena aclarar que Copilot ya no es solo autocompletado en línea. GitHub le ha añadido capas agénticas encima: un "agent mode" dentro del IDE para ediciones interactivas de varios archivos, y un **Copilot coding agent** independiente que corre de forma asíncrona en la nube. Este coding agent se activa desde un issue de GitHub, una mención `@` en un pull request o un prompt en Copilot Chat, y trabaja dentro de "su propio entorno de desarrollo efímero, impulsado por GitHub Actions": investiga el repositorio, hace cambios en una rama, ejecuta tests y linters, y abre un pull request para revisión, con una ventana máxima de ejecución de 59 minutos por tarea. Así que la comparación honesta no es "Copilot contra herramientas agénticas": es autocompletado contra modo agente, sin importar en cuál de las dos herramientas lo encuentres.
 
 ## Cómo es un día real con un asistente agéntico
 
@@ -45,11 +45,11 @@ El resto del día se parece menos a escribir código tú mismo y más a dirigir:
 
 ## Cuándo confiar y cuándo verificar
 
-La guía honesta aquí no es "confía siempre" ni "verifica cada línea sin excepción" — se calibra según qué tan verificable sea el resultado. Algunas reglas prácticas con base real:
+La guía honesta aquí no es "confía siempre" ni "verifica cada línea sin excepción": se calibra según qué tan verificable sea el resultado. Algunas reglas prácticas con base real:
 
 - **Confía más cuando hay una señal de éxito o fallo.** Si Claude ejecutó la suite de tests, el build o un linter y te mostró el resultado, eso es evidencia real, no una afirmación. Revisar esa evidencia es más rápido que volver a comprobarla tú mismo.
 - **Verifica más cuando la tarea no tenía ninguna comprobación.** La propia documentación de Anthropic nombra este fallo directamente: la "brecha de confiar-y-luego-verificar", donde una implementación que parece plausible se salta casos límite en silencio porque nada la obligó a demostrarse. Si no puedes verificar un cambio, la recomendación es tajante: no lo despliegues.
-- **Las sugerencias en línea merecen una lectura rápida siempre.** Como cada sugerencia de Copilot es pequeña y local, un vistazo suele bastar para detectar una variable equivocada o un error de índice — pero "suele bastar" no es lo mismo que revisar, y sigue siendo tu línea en cuanto pulsas Tab.
+- **Las sugerencias en línea merecen una lectura rápida siempre.** Como cada sugerencia de Copilot es pequeña y local, un vistazo suele bastar para detectar una variable equivocada o un error de índice. Pero "suele bastar" no es lo mismo que revisar, y sigue siendo tu línea en cuanto pulsas Tab.
 - **Los cambios agénticos que tocan varios archivos merecen una segunda revisión en un contexto limpio.** Como un agente puede modificar muchos archivos en una sola ejecución, un revisor que solo ve el diff — no el razonamiento que lo produjo — detecta cosas que la sesión que implementó el cambio no notará sobre su propio trabajo.
 - **El código de seguridad y autenticación siempre merece revisión manual**, sin importar qué herramienta lo generó ni cuán convincente parezca el resultado.
 

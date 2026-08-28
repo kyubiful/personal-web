@@ -14,7 +14,7 @@ transitionSlug: 'typescript-6-0-last-js-release'
 
 On March 23, 2026, the TypeScript team shipped version 6.0, and with it closed a chapter that started back when the compiler was first written in JavaScript. According to the official announcement on the TypeScript devblog, 6.0 is explicitly "the last release based on the current JavaScript codebase." Everything from here on, starting with TypeScript 7.0, will run on a compiler rewritten in Go, built to take advantage of native code speed and shared-memory multi-threading.
 
-That framing matters more than any single feature in this release. TypeScript 6.0 isn't just another yearly update — it's a deliberate bridge, and the team says as much: "most changes in TypeScript 6.0 are meant to help align and prepare for adopting TypeScript 7.0."
+That framing matters more than any single feature in this release. TypeScript 6.0 isn't just another yearly update: it's a deliberate bridge, and the team says as much: "most changes in TypeScript 6.0 are meant to help align and prepare for adopting TypeScript 7.0."
 
 ## New Language Features
 
@@ -42,7 +42,7 @@ cache.getOrInsertComputed('misses', () => expensiveDefault())
 
 ## Checker Improvements
 
-Inference around methods that don't reference `this` got smarter — TypeScript now prioritizes those functions during type inference, fixing cases where generic type parameters failed to resolve when object properties were reordered (a fix contributed by Mateusz Burzyński).
+Inference around methods that don't reference `this` got smarter: TypeScript now prioritizes those functions during type inference, fixing cases where generic type parameters failed to resolve when object properties were reordered (a fix contributed by Mateusz Burzyński).
 
 There's also a new `--stableTypeOrdering` flag. It aligns 6.0's type ordering with the deterministic algorithm TypeScript 7.0 will use for parallel type checking. It can cost up to a 25% slowdown, so it's meant as a migration diagnostic, not something you leave on permanently.
 
@@ -54,7 +54,7 @@ This is where the "bridge" framing becomes concrete. Several defaults changed:
 
 - `strict: true` (was `false`)
 - `module: "esnext"` (was `"commonjs"`)
-- `target` now floats to the current-year ES version — `es2025` today
+- `target` now floats to the current-year ES version (`es2025` today)
 - `types: []` by default, instead of auto-discovering everything under `@types`
 - `noUncheckedSideEffectImports: true`, `libReplacement: false`
 - `rootDir` now defaults to the tsconfig.json directory
@@ -67,4 +67,4 @@ Every one of these removes a pattern the native Go compiler either won't support
 
 ## Conclusion: A Necessary Evolution
 
-TypeScript 6.0 isn't chasing flashy new syntax — it's cleaning house. Stricter defaults, dropped legacy options, and a diagnostic flag for the checker's future ordering algorithm all point the same direction: getting the ecosystem ready for a compiler that, according to the TypeScript team, is "extremely close to completion" and already previewable through the `@typescript/native-preview` package. If your project still leans on `commonjs` modules, loose `strict` settings, or `node10` resolution, 6.0 is your cue to migrate now, while the transition is still gradual — because 7.0 won't be carrying that baggage forward.
+TypeScript 6.0 isn't chasing flashy new syntax: it's cleaning house. Stricter defaults, dropped legacy options, and a diagnostic flag for the checker's future ordering algorithm all point the same direction: getting the ecosystem ready for a compiler that, according to the TypeScript team, is "extremely close to completion" and already previewable through the `@typescript/native-preview` package. If your project still leans on `commonjs` modules, loose `strict` settings, or `node10` resolution, 6.0 is your cue to migrate now, while the transition is still gradual, because 7.0 won't be carrying that baggage forward.

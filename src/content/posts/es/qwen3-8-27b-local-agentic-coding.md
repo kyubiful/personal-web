@@ -28,9 +28,9 @@ La ficha del modelo destaca cifras de benchmarks orientadas directamente a tarea
 
 Los requisitos de memoria escalan fuerte con la precisión, y la ventana de contexto de 262k hace que el overhead de la caché KV sea un factor real por encima de los pesos base:
 
-- **BF16** (precisión completa): ~56 GB — en la práctica, una tarjeta de clase 80GB (H100, H200)
-- **FP8**: ~28 GB — una tarjeta de clase 48GB (L40S, RTX Pro 6000)
-- **4-bit** (GGUF/AWQ): ~14–16 GB — cabe en una sola tarjeta de consumo de 24GB (RTX 4090)
+- **BF16** (precisión completa): ~56 GB; en la práctica, una tarjeta de clase 80GB (H100, H200)
+- **FP8**: ~28 GB; una tarjeta de clase 48GB (L40S, RTX Pro 6000)
+- **4-bit** (GGUF/AWQ): ~14–16 GB; cabe en una sola tarjeta de consumo de 24GB (RTX 4090)
 
 Esa última cifra —la afirmación de que "cabe en una GPU de 24GB"— proviene del [artículo de hardware de Yotta Labs](https://www.yottalabs.ai/post/qwen-3-8-27b-specs-hardware-requirements-how-to-run-2026), una pieza de vendor/blog y no un benchmark reproducido de forma independiente, y excluye explícitamente la caché KV, que crece con la longitud de contexto y las solicitudes concurrentes. Tómala como una estimación razonable, no como una garantía para tu longitud de contexto exacta.
 

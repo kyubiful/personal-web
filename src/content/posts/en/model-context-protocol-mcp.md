@@ -18,7 +18,7 @@ The official docs describe it with a simple analogy: MCP is like a USB-C port fo
 
 ## The Problem It Solves: M×N Integrations
 
-Before MCP, every AI application that wanted to talk to an external system (a database, a ticketing tool, a calendar) needed its own bespoke integration for that system. With **M** AI applications and **N** external tools, you end up building and maintaining roughly **M×N** integrations — one per pair.
+Before MCP, every AI application that wanted to talk to an external system (a database, a ticketing tool, a calendar) needed its own bespoke integration for that system. With **M** AI applications and **N** external tools, you end up building and maintaining roughly **M×N** integrations: one per pair.
 
 MCP flips that into an **M+N** problem: a tool author builds one MCP server, and any MCP-compatible AI application can talk to it without extra glue code. Application authors build one MCP client implementation and immediately get access to every MCP server in the ecosystem.
 
@@ -26,18 +26,18 @@ MCP flips that into an **M+N** problem: a tool author builds one MCP server, and
 
 MCP defines three participants:
 
-- **Host** — the AI application that coordinates everything, such as Claude Desktop, Claude Code, or VS Code with Copilot.
-- **Client** — a component the host creates for each connection. Every client maintains a single, dedicated connection to one server.
-- **Server** — a program that exposes context (data and actions) to clients through the protocol.
+- **Host**: the AI application that coordinates everything, such as Claude Desktop, Claude Code, or VS Code with Copilot.
+- **Client**: a component the host creates for each connection. Every client maintains a single, dedicated connection to one server.
+- **Server**: a program that exposes context (data and actions) to clients through the protocol.
 
 A host can hold several clients at once, one per connected server. If VS Code connects to a filesystem server and a Sentry server, it instantiates two separate MCP clients internally, each pinned to its own server.
 
 Servers can run locally or remotely, and this maps to the two transports MCP supports:
 
-- **stdio** — the client launches the server as a local subprocess and they talk over standard input/output. No network involved; typically one client per server.
-- **Streamable HTTP** — the client talks to a remote server over HTTP (with optional Server-Sent Events for streaming), usually authenticated with OAuth or a bearer token. A remote server can serve many clients at once.
+- **stdio**: the client launches the server as a local subprocess and they talk over standard input/output. No network involved; typically one client per server.
+- **Streamable HTTP**: the client talks to a remote server over HTTP (with optional Server-Sent Events for streaming), usually authenticated with OAuth or a bearer token. A remote server can serve many clients at once.
 
-Underneath both transports, MCP exchanges JSON-RPC 2.0 messages — the transport just decides how those messages travel.
+Underneath both transports, MCP exchanges JSON-RPC 2.0 messages: the transport just decides how those messages travel.
 
 ## What a Server Exposes: Tools, Resources, and Prompts
 
@@ -45,7 +45,7 @@ An MCP server can offer three kinds of primitives, each with a different "who's 
 
 | Primitive     | What it is                                                                                                                                    | Who controls it |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| **Tools**     | Executable functions with a JSON Schema for their inputs — e.g. `searchFlights`, `sendEmail`. The model decides when to call them.            | The model       |
+| **Tools**     | Executable functions with a JSON Schema for their inputs, e.g. `searchFlights`, `sendEmail`. The model decides when to call them.            | The model       |
 | **Resources** | Read-only data identified by a URI, like `file:///report.pdf` or `calendar://events/2026`. The application decides how to fetch and use them. | The application |
 | **Prompts**   | Reusable, parameterized templates (e.g. "plan a vacation") that combine specific tools and resources into a guided workflow.                  | The user        |
 
@@ -78,4 +78,4 @@ Nothing here is Claude-specific: any MCP-compatible host can talk to this exact 
 
 ## Conclusion
 
-MCP doesn't make models smarter — it standardizes the plumbing between models and the systems they need to act on. By separating "how do I talk to a data source or tool" from "which AI application am I using," it turns a combinatorial integration problem into a linear one. If you're building an AI feature that needs to reach outside the model — files, APIs, internal tools — reaching for an existing MCP server, or writing a small one like the example above, is usually less work than inventing another one-off integration.
+MCP doesn't make models smarter: it standardizes the plumbing between models and the systems they need to act on. By separating "how do I talk to a data source or tool" from "which AI application am I using," it turns a combinatorial integration problem into a linear one. If you're building an AI feature that needs to reach outside the model — files, APIs, internal tools — reaching for an existing MCP server, or writing a small one like the example above, is usually less work than inventing another one-off integration.

@@ -14,23 +14,23 @@ transitionSlug: 'clean-architecture-vs-screaming-architecture'
 
 Robert C. Martin ("Uncle Bob") introduced both concepts on his blog. In [Screaming Architecture](https://blog.cleancoder.com/uncle-bob/2011/09/30/Screaming-Architecture.html) (2011), he asks a simple but uncomfortable question: if you look at the top-level folder structure of your project, does it tell you what the application _does_, or only which framework it uses? A year later, in [The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) (2012), he formalized the layering and dependency rules that make that kind of structure possible.
 
-They're not competing ideas — Screaming Architecture is the _visible outcome_ of applying Clean Architecture correctly. One tells you _why_ your folders should look a certain way; the other tells you _how_ to get there.
+They're not competing ideas: Screaming Architecture is the _visible outcome_ of applying Clean Architecture correctly. One tells you _why_ your folders should look a certain way; the other tells you _how_ to get there.
 
 ## Screaming Architecture: What Your Folders Say About You
 
-Martin's analogy is architectural in the literal sense: when you look at the blueprints of a building, they scream "house," "library," or "train station" — you don't need to be told. His challenge to developers is direct:
+Martin's analogy is architectural in the literal sense: when you look at the blueprints of a building, they scream "house," "library," or "train station": you don't need to be told. His challenge to developers is direct:
 
 > "Architectures should not be _supplied_ by frameworks. Frameworks are tools to be used, not architectures to be conformed to."
 
-Most codebases fail this test. Open a typical Node.js or Rails project and the first thing you see is `controllers/`, `models/`, `services/`, `routes/` — an org chart of technical roles, not a description of the business. You can't tell if it's a billing system or a blog engine until you dig several folders deep.
+Most codebases fail this test. Open a typical Node.js or Rails project and the first thing you see is `controllers/`, `models/`, `services/`, `routes/`: an org chart of technical roles, not a description of the business. You can't tell if it's a billing system or a blog engine until you dig several folders deep.
 
-Martin's point is that the framework, the database, and the web itself are _details_ — decisions that should be deferrable. A well-structured system should let you delay picking Express vs. Fastify, or Postgres vs. Mongo, without touching your business logic.
+Martin's point is that the framework, the database, and the web itself are _details_: decisions that should be deferrable. A well-structured system should let you delay picking Express vs. Fastify, or Postgres vs. Mongo, without touching your business logic.
 
 ## Clean Architecture: The Mechanism Behind the Scream
 
-Clean Architecture provides the structure that makes that deferral possible, organized as concentric circles: **Entities** (enterprise-wide business rules), **Use Cases** (application-specific logic that orchestrates entities), **Interface Adapters** (controllers, presenters, gateways), and **Frameworks & Drivers** (web frameworks, databases, UI — the outermost, most volatile layer).
+Clean Architecture provides the structure that makes that deferral possible, organized as concentric circles: **Entities** (enterprise-wide business rules), **Use Cases** (application-specific logic that orchestrates entities), **Interface Adapters** (controllers, presenters, gateways), and **Frameworks & Drivers** (web frameworks, databases, UI: the outermost, most volatile layer).
 
-The rule that holds it together is **the Dependency Rule**: source code dependencies can only point inward. Inner circles never know that outer circles exist — a use case doesn't import Express, and an entity doesn't know Postgres exists. As Martin puts it, "the overriding rule that makes this architecture work is The Dependency Rule."
+The rule that holds it together is **the Dependency Rule**: source code dependencies can only point inward. Inner circles never know that outer circles exist: a use case doesn't import Express, and an entity doesn't know Postgres exists. As Martin puts it, "the overriding rule that makes this architecture work is The Dependency Rule."
 
 The payoff is concrete: your business logic is independent of frameworks, testable without spinning up a database or an HTTP server, and free to swap infrastructure — "you can swap out Oracle or SQL Server, for Mongo, BigTable, CouchDB, or something else" — without rewriting the core.
 
@@ -92,14 +92,14 @@ src/
         PostgresOrderRepository.ts   # implements OrderRepository
 ```
 
-`PlaceOrder.ts` depends only on `Order` entities and an `OrderRepository` interface — never on Express or Postgres. `PostgresOrderRepository.ts` lives in `infrastructure/`, implementing that interface. If you swapped Express for Fastify or Postgres for Mongo tomorrow, `use-cases/` and `entities/` wouldn't change a single line. Open the top-level `use-cases/` folder and the system tells you exactly what it's for: placing orders, issuing invoices, refunding customers — before you've read a single line of implementation.
+`PlaceOrder.ts` depends only on `Order` entities and an `OrderRepository` interface: never on Express or Postgres. `PostgresOrderRepository.ts` lives in `infrastructure/`, implementing that interface. If you swapped Express for Fastify or Postgres for Mongo tomorrow, `use-cases/` and `entities/` wouldn't change a single line. Open the top-level `use-cases/` folder and the system tells you exactly what it's for: placing orders, issuing invoices, refunding customers: before you've read a single line of implementation.
 
 ## When This Is Worth It
 
-This isn't free. For a small CRUD app or a short-lived prototype, the extra indirection (interfaces, dependency inversion, extra folders) can be overkill — you're paying structure costs for flexibility you'll never use. It pays off as business logic grows in complexity and needs to survive framework churn, multiple delivery mechanisms (web, CLI, batch jobs), or long-term maintenance by teams who need to onboard quickly by reading folder names, not tracing imports.
+This isn't free. For a small CRUD app or a short-lived prototype, the extra indirection (interfaces, dependency inversion, extra folders) can be overkill: you're paying structure costs for flexibility you'll never use. It pays off as business logic grows in complexity and needs to survive framework churn, multiple delivery mechanisms (web, CLI, batch jobs), or long-term maintenance by teams who need to onboard quickly by reading folder names, not tracing imports.
 
 ## Conclusion: Let Your Structure Talk
 
 Clean Architecture and Screaming Architecture answer two different questions that lead to the same place. Clean Architecture asks "how do I keep business logic independent of infrastructure?" and answers with layers and a dependency rule pointing inward. Screaming Architecture asks "what should someone see when they open my project?" and answers: your use cases, not your framework.
 
-The practical test is simple. Open your `src/` folder. If the first thing you see is `controllers`, `services`, and `models`, your architecture is screaming "web app." If it's `place-order`, `issue-invoice`, and `refund-customer`, it's screaming what your business actually does — and that's the structure that survives your next framework migration.
+The practical test is simple. Open your `src/` folder. If the first thing you see is `controllers`, `services`, and `models`, your architecture is screaming "web app." If it's `place-order`, `issue-invoice`, and `refund-customer`, it's screaming what your business actually does, and that's the structure that survives your next framework migration.

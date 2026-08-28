@@ -30,11 +30,11 @@ In practice, this turns dependency installs that used to take tens of seconds in
 
 uv exposes distinct command groups instead of forcing everything through a single interface:
 
-- **Projects** — dependency and environment management via `pyproject.toml` and a universal lockfile (`uv.lock`), replacing Poetry-style workflows.
-- **Scripts** — running standalone scripts with inline, PEP 723-style dependency declarations, no project setup required.
-- **Tools** — installing and running CLI applications in isolated environments, replacing `pipx`.
-- **Python versions** — downloading and managing multiple Python interpreters, replacing `pyenv`.
-- **pip interface** — a drop-in, pip-compatible command set (`uv pip install`, `uv pip compile`, `uv pip freeze`) for legacy workflows that aren't ready for the higher-level project commands yet.
+- **Projects**: dependency and environment management via `pyproject.toml` and a universal lockfile (`uv.lock`), replacing Poetry-style workflows.
+- **Scripts**: running standalone scripts with inline, PEP 723-style dependency declarations, no project setup required.
+- **Tools**: installing and running CLI applications in isolated environments, replacing `pipx`.
+- **Python versions**: downloading and managing multiple Python interpreters, replacing `pyenv`.
+- **pip interface**: a drop-in, pip-compatible command set (`uv pip install`, `uv pip compile`, `uv pip freeze`) for legacy workflows that aren't ready for the higher-level project commands yet.
 
 ## Quick Start
 
@@ -75,7 +75,7 @@ uv add 'requests==2.31.0'
 uv add git+https://github.com/psf/requests
 ```
 
-The first `uv add`, `uv run`, or `uv sync` call automatically creates a `.venv/` virtual environment and generates a `uv.lock` cross-platform lockfile — no separate `python -m venv` step needed.
+The first `uv add`, `uv run`, or `uv sync` call automatically creates a `.venv/` virtual environment and generates a `uv.lock` cross-platform lockfile: no separate `python -m venv` step needed.
 
 ### 4. Run Your Code
 
@@ -126,4 +126,4 @@ uvx ruff check .
 
 ## Conclusion: A Simpler, Faster Default
 
-uv doesn't just speed up `pip install` — it collapses a fragmented toolchain of `pip`, `pip-tools`, `pipx`, `poetry`, `pyenv`, and `virtualenv` into a single, cohesive, Rust-powered binary. For new projects, it's becoming a sensible default; for existing ones, its pip-compatible interface makes migration incremental rather than all-or-nothing. If your Python workflow still feels slower than it should, uv is worth the ten minutes it takes to try.
+uv doesn't just speed up `pip install`: it collapses a fragmented toolchain of `pip`, `pip-tools`, `pipx`, `poetry`, `pyenv`, and `virtualenv` into a single, cohesive, Rust-powered binary. For new projects, it's becoming a sensible default; for existing ones, its pip-compatible interface makes migration incremental rather than all-or-nothing. If your Python workflow still feels slower than it should, uv is worth the ten minutes it takes to try.

@@ -16,7 +16,7 @@ TypeScript 7.0 landed on July 8, 2026, and it is not just another yearly release
 
 ## Why Go and Not Rust, C#, or More JavaScript
 
-The obvious question is why Go, when Rust is the usual choice for this kind of systems-level rewrite. The TypeScript team evaluated Rust and decided against it: the existing compiler leans heavily on graphs, shared mutable state, and data passed around by reference, patterns that map cleanly onto Go but would have forced a structural redesign in Rust — adding years to the project. Go let the team port the logic close to function-for-function, and its goroutines made it straightforward to parallelize type-checking across CPU cores without rearchitecting the checker. In short: Go was the pragmatic choice that let them preserve correctness while still getting native-code performance and real multithreading.
+The obvious question is why Go, when Rust is the usual choice for this kind of systems-level rewrite. The TypeScript team evaluated Rust and decided against it: the existing compiler leans heavily on graphs, shared mutable state, and data passed around by reference, patterns that map cleanly onto Go but would have forced a structural redesign in Rust, adding years to the project. Go let the team port the logic close to function-for-function, and its goroutines made it straightforward to parallelize type-checking across CPU cores without rearchitecting the checker. In short: Go was the pragmatic choice that let them preserve correctness while still getting native-code performance and real multithreading.
 
 ## The Performance Numbers
 
@@ -41,13 +41,13 @@ TypeScript 7.0 also resets several defaults and drops long-deprecated features, 
 
 - `strict` mode is enabled by default.
 - `module` now defaults to `esnext`.
-- `types` defaults to an empty array — you now have to list the `@types` packages you actually want.
+- `types` defaults to an empty array: you now have to list the `@types` packages you actually want.
 - `rootDir` defaults to `./`, which can shift output paths in existing configs.
 - `stableTypeOrdering` is mandatory and can no longer be turned off.
 - ES5 targets, AMD/UMD/SystemJS module output, `baseUrl` (use `paths` instead), and classic module resolution are all gone. `esModuleInterop` and `allowSyntheticDefaultImports` can no longer be set to `false`.
 - Template literal types now split strings on Unicode code points instead of surrogate pairs, so `"😀abc"` splits as `["😀", "abc"]` rather than breaking the emoji apart.
 
-The bigger practical caveat: there is no stable programmatic API in 7.0 yet — that lands in 7.1. That means tooling built on top of the compiler API, including `typescript-eslint`, and framework-specific tooling for Vue, Svelte, Astro, MDX, and Angular templates, cannot adopt TypeScript 7 yet. If your stack (like this site's) relies on Astro's TypeScript integration, you are not blocked from installing 7.0, but full tooling support is still catching up.
+The bigger practical caveat: there is no stable programmatic API in 7.0 yet; that lands in 7.1. That means tooling built on top of the compiler API, including `typescript-eslint`, and framework-specific tooling for Vue, Svelte, Astro, MDX, and Angular templates, cannot adopt TypeScript 7 yet. If your stack (like this site's) relies on Astro's TypeScript integration, you are not blocked from installing 7.0, but full tooling support is still catching up.
 
 ## How to Upgrade Today
 
@@ -62,7 +62,7 @@ Because of that gap, Microsoft is shipping a compatibility package so you can ru
 }
 ```
 
-This lets you point your editor and CI at the fast native compiler for type-checking while keeping the 6.0-compatible package around for any tool that still expects the old programmatic API (exposed as the `tsc6` binary). If your project doesn't depend on framework tooling that hasn't caught up yet, a straightforward `npm install -D typescript@7` is enough — just budget time to work through the new strict defaults and the removed legacy options.
+This lets you point your editor and CI at the fast native compiler for type-checking while keeping the 6.0-compatible package around for any tool that still expects the old programmatic API (exposed as the `tsc6` binary). If your project doesn't depend on framework tooling that hasn't caught up yet, a straightforward `npm install -D typescript@7` is enough: just budget time to work through the new strict defaults and the removed legacy options.
 
 ## Conclusion
 

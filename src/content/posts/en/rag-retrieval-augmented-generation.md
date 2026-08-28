@@ -22,11 +22,11 @@ The practical payoff for application builders: you can ground answers in a docum
 
 A typical production RAG system has five stages:
 
-1. **Chunking** — split source documents into smaller passages, because you can't (and shouldn't) embed an entire document as one vector.
-2. **Embeddings** — convert each chunk into a dense vector using an embedding model.
-3. **Vector search** — at query time, embed the user's question and retrieve the nearest chunks from a vector index (or combine with keyword search like BM25).
-4. **Re-ranking** — pass the retrieved candidates, along with the raw query, through a more expensive but more accurate model that reorders them by actual relevance.
-5. **Prompt assembly** — insert the top-ranked chunks into the LLM's context window alongside the user's question and generate the final answer.
+1. **Chunking**: split source documents into smaller passages, because you can't (and shouldn't) embed an entire document as one vector.
+2. **Embeddings**: convert each chunk into a dense vector using an embedding model.
+3. **Vector search**: at query time, embed the user's question and retrieve the nearest chunks from a vector index (or combine with keyword search like BM25).
+4. **Re-ranking**: pass the retrieved candidates, along with the raw query, through a more expensive but more accurate model that reorders them by actual relevance.
+5. **Prompt assembly**: insert the top-ranked chunks into the LLM's context window alongside the user's question and generate the final answer.
 
 ```
 query ──► embed ──► vector search (top-k) ──► rerank (top-n) ──► prompt assembly ──► LLM answer
@@ -41,7 +41,7 @@ Each stage is a place where quality can be won or lost, which is exactly where m
 
 Chunking looks trivial and rarely is. Pinecone's [guide to chunking strategies](https://www.pinecone.io/learn/chunking-strategies/) recommends starting with fixed-size chunking as a baseline, but notes the real tension: chunks need to be "big enough to contain meaningful information, while small enough to enable performant applications." Split too small and a chunk loses the surrounding context needed to make sense of it; split too large and you dilute the specific fact a query is looking for, hurting embedding precision. The guide suggests testing chunk sizes (commonly in the 128–1024 token range) against real queries rather than picking one number and moving on.
 
-There's a subtler version of this problem: even well-sized chunks can be _ambiguous_ out of context. Anthropic's [Contextual Retrieval](https://www.anthropic.com/news/contextual-retrieval) post gives the canonical example — a chunk that says "revenue grew by 3%" is useless without knowing which company or quarter it refers to. Their fix is to prepend a short LLM-generated context blurb to each chunk before embedding and indexing it (both for the vector embedding and for BM25). In their evaluations, contextual embeddings alone cut retrieval failure rate by 35%, and combining contextual embeddings with contextual BM25 cut it by 49% (from 5.7% to 2.9% failed retrievals at top-20).
+There's a subtler version of this problem: even well-sized chunks can be _ambiguous_ out of context. Anthropic's [Contextual Retrieval](https://www.anthropic.com/news/contextual-retrieval) post gives the canonical example: a chunk that says "revenue grew by 3%" is useless without knowing which company or quarter it refers to. Their fix is to prepend a short LLM-generated context blurb to each chunk before embedding and indexing it (both for the vector embedding and for BM25). In their evaluations, contextual embeddings alone cut retrieval failure rate by 35%, and combining contextual embeddings with contextual BM25 cut it by 49% (from 5.7% to 2.9% failed retrievals at top-20).
 
 ## Common Mistake #2: Skipping Re-ranking
 
@@ -55,7 +55,7 @@ A RAG system is only as current as its index. If the underlying documents change
 
 ## Common Mistake #4: Confusing Retrieval Relevance with Answer Quality
 
-It's tempting to treat "did we retrieve the right chunks" and "was the final answer good" as the same question, but they're separate failure modes that need separate evaluation. A system can retrieve perfectly relevant passages and still generate a wrong or hallucinated answer if the model misreads or ignores the context, or if the prompt buries the key chunk under too much irrelevant material. Conversely, a system can retrieve mediocre chunks and still produce a plausible-looking answer that's actually ungrounded — which is worse, because it _looks_ trustworthy. Evaluate retrieval quality (precision/recall of relevant chunks) and end-to-end answer quality (faithfulness to the retrieved context, correctness) as two separate metrics, not one blended "it seemed to work" judgment.
+It's tempting to treat "did we retrieve the right chunks" and "was the final answer good" as the same question, but they're separate failure modes that need separate evaluation. A system can retrieve perfectly relevant passages and still generate a wrong or hallucinated answer if the model misreads or ignores the context, or if the prompt buries the key chunk under too much irrelevant material. Conversely, a system can retrieve mediocre chunks and still produce a plausible-looking answer that's actually ungrounded, which is worse, because it _looks_ trustworthy. Evaluate retrieval quality (precision/recall of relevant chunks) and end-to-end answer quality (faithfulness to the retrieved context, correctness) as two separate metrics, not one blended "it seemed to work" judgment.
 
 ## Conclusion
 

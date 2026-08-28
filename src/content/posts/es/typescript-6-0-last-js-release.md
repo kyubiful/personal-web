@@ -54,7 +54,7 @@ Aquí es donde el enfoque de "puente" se vuelve concreto. Varios valores por def
 
 - `strict: true` (antes era `false`)
 - `module: "esnext"` (antes era `"commonjs"`)
-- `target` ahora sigue el año actual de la especificación ES — hoy `es2025`
+- `target` ahora sigue el año actual de la especificación ES (hoy `es2025`)
 - `types: []` por defecto, en lugar de detectar automáticamente todo lo que hay bajo `@types`
 - `noUncheckedSideEffectImports: true`, `libReplacement: false`
 - `rootDir` ahora toma por defecto el directorio donde está el `tsconfig.json`

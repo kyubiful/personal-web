@@ -26,16 +26,16 @@ MCP convierte eso en un problema **M+N**: quien crea una herramienta construye u
 
 MCP define tres participantes:
 
-- **Host** — la aplicación de IA que coordina todo, como Claude Desktop, Claude Code o VS Code con Copilot.
-- **Client** — un componente que el host crea por cada conexión. Cada cliente mantiene una única conexión dedicada a un servidor.
-- **Server** — un programa que expone contexto (datos y acciones) a los clientes a través del protocolo.
+- **Host**: la aplicación de IA que coordina todo, como Claude Desktop, Claude Code o VS Code con Copilot.
+- **Client**: un componente que el host crea por cada conexión. Cada cliente mantiene una única conexión dedicada a un servidor.
+- **Server**: un programa que expone contexto (datos y acciones) a los clientes a través del protocolo.
 
 Un host puede mantener varios clientes a la vez, uno por cada servidor conectado. Si VS Code se conecta a un servidor de sistema de archivos y a un servidor de Sentry, internamente crea dos clientes MCP independientes, cada uno vinculado a su propio servidor.
 
 Los servidores pueden ejecutarse en local o en remoto, y esto se corresponde con los dos transportes que soporta MCP:
 
-- **stdio** — el cliente lanza el servidor como un subproceso local y se comunican por entrada/salida estándar. No hay red de por medio; normalmente hay un cliente por servidor.
-- **Streamable HTTP** — el cliente habla con un servidor remoto por HTTP (con Server-Sent Events opcionales para streaming), normalmente autenticado con OAuth o un bearer token. Un servidor remoto puede atender a muchos clientes a la vez.
+- **stdio**: el cliente lanza el servidor como un subproceso local y se comunican por entrada/salida estándar. No hay red de por medio; normalmente hay un cliente por servidor.
+- **Streamable HTTP**: el cliente habla con un servidor remoto por HTTP (con Server-Sent Events opcionales para streaming), normalmente autenticado con OAuth o un bearer token. Un servidor remoto puede atender a muchos clientes a la vez.
 
 Debajo de ambos transportes, MCP intercambia mensajes JSON-RPC 2.0; el transporte solo decide cómo viajan esos mensajes.
 

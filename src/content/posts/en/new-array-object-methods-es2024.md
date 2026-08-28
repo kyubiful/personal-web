@@ -111,4 +111,4 @@ No more converting to arrays, filtering, and converting back. Each method also a
 
 ## Conclusion
 
-`Object.groupBy()`, `Map.groupBy()`, `Promise.withResolvers()`, `Array.fromAsync()`, and the new `Set` methods all reached Baseline in 2024 and are safe to reach for today in any modern browser or Node.js runtime. None of them are revolutionary on their own, but together they close long-standing gaps that used to justify pulling in a utility library. The platform keeps absorbing the patterns developers reach for the most — and that's exactly the kind of "boring" progress worth paying attention to.
+`Object.groupBy()`, `Map.groupBy()`, `Promise.withResolvers()`, `Array.fromAsync()`, and the new `Set` methods all reached Baseline in 2024 and are safe to reach for today in any modern browser or Node.js runtime. None of them are revolutionary on their own, but together they close long-standing gaps that used to justify pulling in a utility library. The platform keeps absorbing the patterns developers reach for the most, and that's exactly the kind of "boring" progress worth paying attention to.
