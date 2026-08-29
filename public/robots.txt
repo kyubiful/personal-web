@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sergiozabala.dev/sitemap-index.xml
+Sitemap: https://www.sergiozabala.dev/sitemap-index.xml
